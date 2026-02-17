@@ -46,7 +46,7 @@
     <meta property="og:description" content={data.event.subtitle} />
 </svelte:head>
 
-<NavBar />
+<NavBar events={data.events} />
 
 <!-- Hero Section -->
 <section class="hero">

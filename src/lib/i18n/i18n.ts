@@ -15,7 +15,7 @@ export const translations = {
         },
         registration: {
             title: 'Regisztrálj',
-            subtitle: 'Gyorsan töltődnek a helyek.<br>Regisztrálj most!',
+            subtitle: 'Gyorsan töltődnek a helyek. Regisztrálj most!',
             fields: {
                 lastName: 'Vezetéknév',
                 firstName: 'Keresztnév',
@@ -75,7 +75,7 @@ export const translations = {
         },
         registration: {
             title: 'Register',
-            subtitle: 'Spaces are filling up fast.<br>Register now!',
+            subtitle: 'Spaces are filling up fast. Register now!',
             fields: {
                 lastName: 'Last Name',
                 firstName: 'First Name',

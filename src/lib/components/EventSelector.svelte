@@ -1,37 +1,40 @@
 <script lang="ts">
-    import { goto } from '$app/navigation';
-    import { locale } from '$lib/i18n/i18n';
-    
-    let {events = [], currentEventSlug = ''} = $props();
+    import { goto } from "$app/navigation";
+    import { page } from "$app/state";
+    import { locale } from "$lib/i18n/i18n";
+    import { get } from "svelte/store";
+
+    let { events = [] } = $props();
 
     let isOpen = $state(false);
-    
-    let currentEvent = $derived(events.find(e => e.slug === currentEventSlug));
-    let currentTitle = $derived(currentEvent?.title || 'Select Other Event');
-    
+    let currentEvent = $derived(
+        events.find((e) => e.slug === page.params.slug),
+    );
+    let currentTitle = $derived(currentEvent?.title || "Select Other Event");
+
     function selectEvent(slug: string) {
         isOpen = false;
-        goto(`/${$locale}/events/${slug}`); //TODO implement the logic to work and use the new endpoint instead of the mocked data.
+        goto(`/${get(locale)}/events/${slug}`);
     }
-    
+
     function toggleDropdown() {
         isOpen = !isOpen;
     }
-    
+
     // Close dropdown when clicking outside
     function handleClickOutside(event: MouseEvent) {
         const target = event.target as HTMLElement;
-        if (!target.closest('.event-selector')) {
+        if (!target.closest(".event-selector")) {
             isOpen = false;
         }
     }
 </script>
 
-<svelte:window on:click={handleClickOutside} />
+<svelte:window onclick={handleClickOutside} />
 
 <div class="event-selector">
-    <button 
-        class="event-selector-trigger" 
+    <button
+        class="event-selector-trigger"
         class:open={isOpen}
         onclick={(e) => {
             e.stopPropagation();
@@ -39,38 +42,38 @@
         }}
     >
         <span class="event-title">{currentTitle}</span>
-        <svg 
-            class="chevron" 
+        <svg
+            class="chevron"
             class:rotated={isOpen}
-            width="16" 
-            height="16" 
-            viewBox="0 0 16 16" 
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
             fill="none"
         >
-            <path 
-                d="M4 6L8 10L12 6" 
-                stroke="currentColor" 
-                stroke-width="2" 
-                stroke-linecap="round" 
+            <path
+                d="M4 6L8 10L12 6"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
                 stroke-linejoin="round"
             />
         </svg>
     </button>
-    
+
     {#if isOpen}
         <div class="event-dropdown">
             <div class="event-list">
                 {#each events as event}
                     <button
                         class="event-item"
-                        class:active={event.slug === currentEventSlug}
+                        class:active={event.slug === currentEvent.slug}
                         onclick={(e) => {
                             e.stopPropagation();
                             selectEvent(event.slug);
                         }}
                     >
                         <span class="event-item-title">{event.title}</span>
-                        {#if event.slug === currentEventSlug}
+                        {#if event.slug === currentEvent.slug}
                             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                 <path 
                                     d="M13 4L6 11L3 8" 
@@ -92,7 +95,7 @@
     .event-selector {
         position: relative;
     }
-    
+
     .event-selector-trigger {
         display: flex;
         align-items: center;
@@ -109,17 +112,17 @@
         min-width: 200px;
         justify-content: space-between;
     }
-    
+
     .event-selector-trigger:hover {
         background: rgba(255, 255, 255, 0.25);
         border-color: rgba(255, 255, 255, 0.5);
     }
-    
+
     .event-selector-trigger.open {
         background: rgba(255, 255, 255, 0.25);
         border-color: rgba(255, 255, 255, 0.5);
     }
-    
+
     .event-title {
         overflow: hidden;
         text-overflow: ellipsis;
@@ -127,16 +130,16 @@
         flex: 1;
         text-align: left;
     }
-    
+
     .chevron {
         flex-shrink: 0;
         transition: transform 0.3s ease;
     }
-    
+
     .chevron.rotated {
         transform: rotate(180deg);
     }
-    
+
     .event-dropdown {
         position: absolute;
         top: calc(100% + 8px);
@@ -149,7 +152,7 @@
         z-index: 100;
         animation: slideDown 0.2s ease;
     }
-    
+
     @keyframes slideDown {
         from {
             opacity: 0;
@@ -160,29 +163,29 @@
             transform: translateY(0);
         }
     }
-    
+
     .event-list {
         max-height: 300px;
         overflow-y: auto;
     }
-    
+
     .event-list::-webkit-scrollbar {
         width: 6px;
     }
-    
+
     .event-list::-webkit-scrollbar-track {
         background: #f1f1f1;
     }
-    
+
     .event-list::-webkit-scrollbar-thumb {
-        background: #FF7A59;
+        background: #ff7a59;
         border-radius: 3px;
     }
-    
+
     .event-list::-webkit-scrollbar-thumb:hover {
         background: #ff6342;
     }
-    
+
     .event-item {
         width: 100%;
         display: flex;
@@ -199,28 +202,28 @@
         font-size: 14px;
         text-align: left;
     }
-    
+
     .event-item:last-child {
         border-bottom: none;
     }
-    
+
     .event-item:hover {
         background: #f8f9fa;
     }
-    
+
     .event-item.active {
         background: #fff5f2;
-        color: #FF7A59;
+        color: #ff7a59;
         font-weight: 600;
     }
-    
+
     .event-item-title {
         flex: 1;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    
+
     /* Mobile adjustments */
     @media (max-width: 768px) {
         .event-selector-trigger {
@@ -228,7 +231,7 @@
             font-size: 13px;
             padding: 6px 12px;
         }
-        
+
         .event-dropdown {
             position: fixed;
             left: 10px;

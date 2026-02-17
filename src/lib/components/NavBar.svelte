@@ -3,18 +3,7 @@
     import EventSelector from "./EventSelector.svelte";
     import LanguageSwitcher from "./LanguageSwitcher.svelte";
 
-    let mockedEvents = [
-        {
-            id: 1,
-            title: 'test valami',
-            slug: "slogfaf-afas-fa-"
-        },
-                {
-            id: 2,
-            title: 'test vdasdasdasalami',
-            slug: "slogfaf-afasdfasfsafaas-fa-"
-        },
-    ]
+    let { events } = $props();
 
 </script>
 <header class="header">
@@ -27,7 +16,7 @@
             </div>
         </div>
         <nav class="nav">
-            <EventSelector events={mockedEvents}/>
+            <EventSelector events={events}/>
             <a href="#productDesignTalks">{$t("nav.productDesignTalks")}</a>
             <a href="#program">{$t("nav.program")}</a>
             <a href="#contact">{$t("nav.contact")}</a>
