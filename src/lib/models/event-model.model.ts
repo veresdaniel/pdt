@@ -8,6 +8,7 @@ export interface EventModel {
     header: string,
     subHeader: string,
     slug: string,
+    featuredImageUrl: string,
     programs: EventProgram[]
 }
 

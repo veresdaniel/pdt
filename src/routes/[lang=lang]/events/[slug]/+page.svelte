@@ -84,11 +84,11 @@
 </section>
 
 <!-- Event Details Section (optional image) -->
-{#if data.event.imageUrl}
+{#if data.event.featuredImageUrl}
     <section class="event-details">
         <div class="container">
             <img
-                src={data.event.imageUrl}
+                src={data.event.featuredImageUrl}
                 alt={data.event.title}
                 class="event-image"
             />

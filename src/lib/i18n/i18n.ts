@@ -28,7 +28,7 @@ export const translations = {
             submit: 'Beküldés',
             required: '*',
             submitting: 'Küldés...',
-            success: '✓ Sikeres regisztráció! Ellenőrizze email fiókját a visszaigazolásért.',
+            success: '✓ Sikeres regisztráció!',
             newRegistration: 'Új regisztráció',
             errors: {
                 lastName: 'A vezetéknév legalább 2 karakter kell legyen',
@@ -90,7 +90,7 @@ export const translations = {
             submit: 'Submit',
             required: '*',
             submitting: 'Submitting...',
-            success: '✓ Registration successful! Check your email for confirmation.',
+            success: '✓ Registration successful!',
             newRegistration: 'New Registration',
             errors: {
                 lastName: 'Last name must be at least 2 characters',
