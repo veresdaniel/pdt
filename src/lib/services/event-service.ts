@@ -7,7 +7,6 @@ export class EventService {
         fetch: typeof global.fetch,
         lang: string
     ): Promise<EventModel> {
-        console.log('language:', lang)
         const res: Response = await fetch(`${API_BASE_URL}/events/upcoming`, {
             headers: {
                 'x-language': lang
