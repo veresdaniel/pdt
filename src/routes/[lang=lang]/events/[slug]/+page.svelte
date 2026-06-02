@@ -5,7 +5,7 @@
     import { page } from "$app/state";
     import defaultSpeakerLogo from "$lib/assets/ergomania-logo-colored-on-dark-big.svg";
 
-    export let data;
+ let { data } = $props();
 
     function formatDate(date) {
         if (!date) return "";
@@ -36,6 +36,7 @@
         if (!date) return "";
         return `${formatDate(date)}, ${formatTime(date)}`;
     }
+console.log(data.menuItems)
 </script>
 
 <svelte:head>
@@ -52,7 +53,7 @@
     <meta property="og:description" content={data.event.subtitle} />
 </svelte:head>
 
-<NavBar events={data.events} />
+<NavBar events={data.events} menuItems={data.menuItems}/>
 
 <!-- Hero Section -->
 <section class="hero">

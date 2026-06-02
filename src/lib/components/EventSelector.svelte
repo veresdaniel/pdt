@@ -28,6 +28,8 @@
             isOpen = false;
         }
     }
+
+    console.log(events)
 </script>
 
 <svelte:window onclick={handleClickOutside} />
