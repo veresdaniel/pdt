@@ -3,6 +3,7 @@ import { API_BASE_URL } from '$env/static/private';
 import type { EventInfo } from '$lib/models/event-info.model';
 import { error } from '@sveltejs/kit';
 import { uxServicesCategories } from '$lib/mockData/services-menu.mock';
+import { eventsMenu } from '$lib/mockData/events-menu.mock';
 
 export const load: PageServerLoad = async ({ params, locals, fetch }) => {
   const lang = params.lang;
@@ -19,7 +20,10 @@ export const load: PageServerLoad = async ({ params, locals, fetch }) => {
     }
     });
     const menuItems = await menuRes.json();
+    menuItems.sort((a:any ,b:any) => a.headerIndex - b.headerIndex);
     menuItems[0].categoryChildren = uxServicesCategories;
+    menuItems.splice(menuItems.length - 1, 0, eventsMenu);
+
 
   const events: EventInfo[] = await eventsResponse.json();
 

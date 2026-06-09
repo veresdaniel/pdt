@@ -12,6 +12,7 @@
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
   },
   "devDependencies": {
+    "@ergodot/ui-kit": "git+https://github.com/veresdaniel/ergodot-ui-kit.git",
     "@sveltejs/adapter-auto": "7.0.1",
     "@sveltejs/kit": "2.61.1",
     "@sveltejs/vite-plugin-svelte": "7.1.2",

@@ -1,64 +1,137 @@
-/* Poppins @font-face – CDN woff2 (preloaded in app.html) */
-@font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-    src: url('https://ergo-cdn2.azureedge.net/fonts/poppins/poppins-latin-400.woff2') format('woff2');
+@import "tailwindcss";
+
+
+/* ── Tailwind v4 theme ───────────────────────────────── */
+
+/* primary palette (Flowbite) */
+@theme {
+  --color-primary-50:  #FFF5F2;
+  --color-primary-100: #FFF1EE;
+  --color-primary-200: #FFE4DE;
+  --color-primary-300: #FFD5CC;
+  --color-primary-400: #FFBCAD;
+  --color-primary-500: #FE795D;
+  --color-primary-600: #EF562F;
+  --color-primary-700: #EB4F27;
+  --color-primary-800: #CC4522;
+  --color-primary-900: #A5371B;
 }
 
-@font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 500;
-    font-display: swap;
-    src: url('https://ergo-cdn2.azureedge.net/fonts/poppins/poppins-latin-500.woff2') format('woff2');
+/* admin sidebar */
+@theme {
+  --color-admin-sidebar: 24 121 90;
 }
 
-@font-face {
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-    src: url('https://ergo-cdn2.azureedge.net/fonts/poppins/poppins-latin-600.woff2') format('woff2');
+/* Master tailwind.config.cjs → TW4 @theme */
+@theme {
+  /* Font families (Poppins everywhere) */
+  --font-sans:  'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-title: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --font-body:  'Poppins', ui-sans-serif, system-ui, sans-serif;
+  --default-font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+
+  /* Font sizes (master fontSize) */
+  --text-display: 5.5rem;
+  --text-display--line-height: 5.625rem;
+  --text-displayMobile: 3rem;
+  --text-displayMobile--line-height: 3.5rem;
+  --text-heading1: 4.25rem;
+  --text-heading1--line-height: 4.5rem;
+  --text-heading1mobile: 2.25rem;
+  --text-heading1mobile--line-height: 2.5rem;
+  --text-heading2: 3rem;
+  --text-heading2--line-height: 3.25rem;
+  --text-heading2mobile: 1.75rem;
+  --text-heading2mobile--line-height: 2rem;
+  --text-heading3: 1.5rem;
+  --text-heading3--line-height: 1.75rem;
+  --text-heading3mobile: 1.5rem;
+  --text-heading3mobile--line-height: 1.75rem;
+  --text-heading4: 1.375rem;
+  --text-heading4--line-height: 1.625rem;
+  --text-heading4mobile: 1.25rem;
+  --text-heading4mobile--line-height: 1.5rem;
+  --text-heading5: 1.375rem;
+  --text-heading5--line-height: 1.875rem;
+  --text-heading5mobile: 1.25rem;
+  --text-heading5mobile--line-height: 1.5rem;
+  --text-heading6: 1rem;
+  --text-heading6--line-height: 1.5rem;
+  --text-body: 1.125rem;
+  --text-body--line-height: 1.5rem;
+  --text-bodySmall: 0.938rem;
+  --text-bodySmall--line-height: 1.25rem;
+  --text-quote: 2rem;
+  --text-quote--line-height: 2.5rem;
+  --text-quoteMobile: 1.375rem;
+  --text-quoteMobile--line-height: 1.75rem;
+
+  /* Colors (master colors) */
+  --color-orangeDark: #E7512B;
+  --color-orangeDefault: #FB5B33;
+  --color-orangeMid: #FFD0C7;
+  --color-orangePastel: #FFEEEB;
+  --color-bluePastel: #EDFBFF;
+  --color-neutralUltraDark: #1C2036;
+  --color-neutralDark: #404569;
+  --color-neutralGrey: #9396AB;
+  --color-neutralMid: #676B89;
+  --color-neutralLight: #C7C9DA;
+  --color-neutralUltraLight: #1C2036;
+  --color-tagGrey: #E7E8F2;
+
+  /* Breakpoints (master screens) */
+  --breakpoint-xs: 47.99375rem;
+  --breakpoint-sm: 63.99375rem;
+  --breakpoint-md: 83.30625rem;
+  --breakpoint-lg: 119.99375rem;
+  --breakpoint-xl: 156.24375rem;
+
+  /* Custom widths */
+  --width-sticky-left: calc(100% - 354px);
+  --width-sticky-right: 354px;
+  --max-width-container: 90rem;
+
+  /* Feedback / toast */
+  --color-success: #16a34a;
+  --color-error: #dc2626;
+
+  /* ui-kit variable names (same values) – so kit typo/color classes use our design */
+  --color-orange: #FB5B33;
+  --color-orange-mid: #FFD0C7;
+  --color-orange-pastel: #FFEEEB;
+  --color-blue-pastel: #EDFBFF;
+  --color-neutral-ultradark: #1C2036;
+  --color-neutral-dark: #404569;
+  --color-neutral-gray: #9396AB;
+  --color-neutral-mid: #676B89;
+  --color-neutral-light: #C7C9DA;
+  --color-neutral-ultralight: #E8E9F1;
+  --color-neutral-bluishgrey: #E6E9FF;
+  --color-neutral-white: #FFFFFF;
+  --font-size-h1: 4.25rem;
+  --font-size-h1-line: 4.5rem;
+  --font-size-h1-lg: 4.25rem;
+  --font-size-h1-line-lg: 4.5rem;
+  --font-size-h2: 3rem;
+  --font-size-h2-line: 3.25rem;
+  --font-size-h2-lg: 3rem;
+  --font-size-h2-line-lg: 3.25rem;
+  --font-size-h3: 1.5rem;
+  --font-size-h3-line: 1.75rem;
+  --font-size-h3-lg: 2rem;
+  --font-size-h3-line-lg: 2.25rem;
+  --font-size-h4: 1.375rem;
+  --font-size-h4-line: 1.625rem;
+  --font-size-h4-lg: 1.375rem;
+  --font-size-h4-line-lg: 1.625rem;
+  --font-size-body: 1.125rem;
+  --font-size-display-lg: 5.5rem;
+  --font-size-display-line-lg: 5.625rem;
 }
 
-:root {
-    /* Colors (master colors) */
-    --color-orangeDark: #E7512B;
-    --color-orangeDefault: #FB5B33;
-    --color-orangeMid: #FFD0C7;
-    --color-orangePastel: #FFEEEB;
-    --color-bluePastel: #EDFBFF;
-    --color-neutralUltraDark: #1C2036;
-    --color-neutralDark: #404569;
-    --color-neutralGrey: #9396AB;
-    --color-neutralMid: #676B89;
-    --color-neutralLight: #C7C9DA;
-    --color-neutralUltraLight: #1C2036;
-    --color-bluishgray: #e6e9ff;
-    --color-tagGrey: #E7E8F2;
-
-    --color-orange-foreground: #ffffff;
-    /* Neutral */
-    --color-neutral-mid: #676889;
-    /* Mid */
-    --color-neutral-gray: #8f92a8;
-    /* Gray */
-    --color-neutral-ultralight: #e9ecf5;
-    /* Ultra Light */
-    /* Blue (accent) */
-    --color-blue: #1e40af;
-    --color-blue-dark: #1e3a8a;
-}
-
+/* ── Master app.css global rules ── */
 /* Reset and Base Styles */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 html {
     scroll-behavior: smooth;
 }

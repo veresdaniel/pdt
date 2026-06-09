@@ -1,11 +1,17 @@
 <script lang="ts">
     import Footer from "$lib/components/Footer.svelte";
-    import NavBar from "$lib/components/NavBar.svelte";
+    import { PrimaryNavigation, Section } from '@ergodot/ui-kit';
     import Registration from "$lib/components/Registration.svelte";
     import { page } from "$app/state";
     import defaultSpeakerLogo from "$lib/assets/ergomania-logo-colored-on-dark-big.svg";
 
  let { data } = $props();
+
+   const languages = [
+    { title: 'EN', value: 'en' },
+    { title: 'HU', value: 'hu' },
+   
+  ];
 
     function formatDate(date) {
         if (!date) return "";
@@ -53,7 +59,14 @@ console.log(data.menuItems)
     <meta property="og:description" content={data.event.subtitle} />
 </svelte:head>
 
-<NavBar events={data.events} menuItems={data.menuItems}/>
+<Section marginTop={false} marginBottom={false} padding="none" class="app-content-wrapper w-full"}>
+  <PrimaryNavigation
+    menuItems={data.menuItems}
+    {languages}
+    sticky={true}
+  />
+</Section>
+
 
 <!-- Hero Section -->
 <section class="hero">
