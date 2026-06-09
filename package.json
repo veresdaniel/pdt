@@ -14,15 +14,17 @@
   "devDependencies": {
     "@ergodot/ui-kit": "git+https://github.com/veresdaniel/ergodot-ui-kit.git",
     "@sveltejs/adapter-auto": "7.0.1",
-    "@sveltejs/kit": "2.61.1",
+    "@sveltejs/kit": "2.64.0",
     "@sveltejs/vite-plugin-svelte": "7.1.2",
-    "cross-env": "7.0.3",
-    "svelte": "5.55.9",
-    "svelte-check": "4.4.8",
+    "cross-env": "10.1.0",
+    "svelte": "5.56.3",
+    "svelte-check": "4.6.0",
     "typescript": "6.0.3",
-    "vite": "8.0.14"
+    "vite": "8.0.16"
   },
   "dependencies": {
-    "@sveltejs/adapter-vercel": "6.3.3"
+    "@sveltejs/adapter-vercel": "6.3.3",
+    "@tailwindcss/vite": "4.3.0",
+    "tailwindcss": "4.3.0"
   }
 }

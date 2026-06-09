@@ -1,2 +1,5 @@
 allowBuilds:
   esbuild: true
+  '@ergodot/ui-kit': true
+minimumReleaseAgeExclude:
+  - '@sveltejs/kit@2.64.0'
