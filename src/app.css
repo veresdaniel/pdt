@@ -5,129 +5,144 @@
 
 /* primary palette (Flowbite) */
 @theme {
-  --color-primary-50:  #FFF5F2;
-  --color-primary-100: #FFF1EE;
-  --color-primary-200: #FFE4DE;
-  --color-primary-300: #FFD5CC;
-  --color-primary-400: #FFBCAD;
-  --color-primary-500: #FE795D;
-  --color-primary-600: #EF562F;
-  --color-primary-700: #EB4F27;
-  --color-primary-800: #CC4522;
-  --color-primary-900: #A5371B;
+    --color-primary-50: #FFF5F2;
+    --color-primary-100: #FFF1EE;
+    --color-primary-200: #FFE4DE;
+    --color-primary-300: #FFD5CC;
+    --color-primary-400: #FFBCAD;
+    --color-primary-500: #FE795D;
+    --color-primary-600: #EF562F;
+    --color-primary-700: #EB4F27;
+    --color-primary-800: #CC4522;
+    --color-primary-900: #A5371B;
 }
 
 /* admin sidebar */
 @theme {
-  --color-admin-sidebar: 24 121 90;
+    --color-admin-sidebar: 24 121 90;
 }
 
 /* Master tailwind.config.cjs → TW4 @theme */
 @theme {
-  /* Font families (Poppins everywhere) */
-  --font-sans:  'Poppins', ui-sans-serif, system-ui, sans-serif;
-  --font-title: 'Poppins', ui-sans-serif, system-ui, sans-serif;
-  --font-body:  'Poppins', ui-sans-serif, system-ui, sans-serif;
-  --default-font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    /* Font families (Poppins everywhere) */
+    --font-sans: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-title: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --font-body: 'Poppins', ui-sans-serif, system-ui, sans-serif;
+    --default-font-family: 'Poppins', ui-sans-serif, system-ui, sans-serif;
 
-  /* Font sizes (master fontSize) */
-  --text-display: 5.5rem;
-  --text-display--line-height: 5.625rem;
-  --text-displayMobile: 3rem;
-  --text-displayMobile--line-height: 3.5rem;
-  --text-heading1: 4.25rem;
-  --text-heading1--line-height: 4.5rem;
-  --text-heading1mobile: 2.25rem;
-  --text-heading1mobile--line-height: 2.5rem;
-  --text-heading2: 3rem;
-  --text-heading2--line-height: 3.25rem;
-  --text-heading2mobile: 1.75rem;
-  --text-heading2mobile--line-height: 2rem;
-  --text-heading3: 1.5rem;
-  --text-heading3--line-height: 1.75rem;
-  --text-heading3mobile: 1.5rem;
-  --text-heading3mobile--line-height: 1.75rem;
-  --text-heading4: 1.375rem;
-  --text-heading4--line-height: 1.625rem;
-  --text-heading4mobile: 1.25rem;
-  --text-heading4mobile--line-height: 1.5rem;
-  --text-heading5: 1.375rem;
-  --text-heading5--line-height: 1.875rem;
-  --text-heading5mobile: 1.25rem;
-  --text-heading5mobile--line-height: 1.5rem;
-  --text-heading6: 1rem;
-  --text-heading6--line-height: 1.5rem;
-  --text-body: 1.125rem;
-  --text-body--line-height: 1.5rem;
-  --text-bodySmall: 0.938rem;
-  --text-bodySmall--line-height: 1.25rem;
-  --text-quote: 2rem;
-  --text-quote--line-height: 2.5rem;
-  --text-quoteMobile: 1.375rem;
-  --text-quoteMobile--line-height: 1.75rem;
+    /* Font sizes (master fontSize) */
+    --text-display: 5.5rem;
+    --text-display--line-height: 5.625rem;
+    --text-displayMobile: 3rem;
+    --text-displayMobile--line-height: 3.5rem;
+    --text-heading1: 4.25rem;
+    --text-heading1--line-height: 4.5rem;
+    --text-heading1mobile: 2.25rem;
+    --text-heading1mobile--line-height: 2.5rem;
+    --text-heading2: 3rem;
+    --text-heading2--line-height: 3.25rem;
+    --text-heading2mobile: 1.75rem;
+    --text-heading2mobile--line-height: 2rem;
+    --text-heading3: 1.5rem;
+    --text-heading3--line-height: 1.75rem;
+    --text-heading3mobile: 1.5rem;
+    --text-heading3mobile--line-height: 1.75rem;
+    --text-heading4: 1.375rem;
+    --text-heading4--line-height: 1.625rem;
+    --text-heading4mobile: 1.25rem;
+    --text-heading4mobile--line-height: 1.5rem;
+    --text-heading5: 1.375rem;
+    --text-heading5--line-height: 1.875rem;
+    --text-heading5mobile: 1.25rem;
+    --text-heading5mobile--line-height: 1.5rem;
+    --text-heading6: 1rem;
+    --text-heading6--line-height: 1.5rem;
+    --text-body: 1.125rem;
+    --text-body--line-height: 1.5rem;
+    --text-bodySmall: 0.938rem;
+    --text-bodySmall--line-height: 1.25rem;
+    --text-quote: 2rem;
+    --text-quote--line-height: 2.5rem;
+    --text-quoteMobile: 1.375rem;
+    --text-quoteMobile--line-height: 1.75rem;
 
-  /* Colors (master colors) */
-  --color-orangeDark: #E7512B;
-  --color-orangeDefault: #FB5B33;
-  --color-orangeMid: #FFD0C7;
-  --color-orangePastel: #FFEEEB;
-  --color-bluePastel: #EDFBFF;
-  --color-neutralUltraDark: #1C2036;
-  --color-neutralDark: #404569;
-  --color-neutralGrey: #9396AB;
-  --color-neutralMid: #676B89;
-  --color-neutralLight: #C7C9DA;
-  --color-neutralUltraLight: #1C2036;
-  --color-tagGrey: #E7E8F2;
+    /* Colors (master colors) */
+    --color-orangeDark: #E7512B;
+    --color-orangeDefault: #FB5B33;
+    --color-orangeMid: #FFD0C7;
+    --color-orangePastel: #FFEEEB;
+    --color-bluePastel: #EDFBFF;
+    --color-neutralUltraDark: #1C2036;
+    --color-neutralDark: #404569;
+    --color-neutralGrey: #9396AB;
+    --color-neutralMid: #676B89;
+    --color-neutralLight: #C7C9DA;
+    --color-neutralUltraLight: #1C2036;
+    --color-tagGrey: #E7E8F2;
 
-  /* Breakpoints (master screens) */
-  --breakpoint-xs: 47.99375rem;
-  --breakpoint-sm: 63.99375rem;
-  --breakpoint-md: 83.30625rem;
-  --breakpoint-lg: 119.99375rem;
-  --breakpoint-xl: 156.24375rem;
+    /* Breakpoints (master screens) */
+    --breakpoint-xs: 47.99375rem;
+    --breakpoint-sm: 63.99375rem;
+    --breakpoint-md: 83.30625rem;
+    --breakpoint-lg: 119.99375rem;
+    --breakpoint-xl: 156.24375rem;
 
-  /* Custom widths */
-  --width-sticky-left: calc(100% - 354px);
-  --width-sticky-right: 354px;
-  --max-width-container: 90rem;
+    /* Custom widths */
+    --width-sticky-left: calc(100% - 354px);
+    --width-sticky-right: 354px;
+    --max-width-container: 90rem;
 
-  /* Feedback / toast */
-  --color-success: #16a34a;
-  --color-error: #dc2626;
+    /* Feedback / toast */
+    --color-success: #16a34a;
+    --color-error: #dc2626;
 
-  /* ui-kit variable names (same values) – so kit typo/color classes use our design */
-  --color-orange: #FB5B33;
-  --color-orange-mid: #FFD0C7;
-  --color-orange-pastel: #FFEEEB;
-  --color-blue-pastel: #EDFBFF;
-  --color-neutral-ultradark: #1C2036;
-  --color-neutral-dark: #404569;
-  --color-neutral-gray: #9396AB;
-  --color-neutral-mid: #676B89;
-  --color-neutral-light: #C7C9DA;
-  --color-neutral-ultralight: #E8E9F1;
-  --color-neutral-bluishgrey: #E6E9FF;
-  --color-neutral-white: #FFFFFF;
-  --font-size-h1: 4.25rem;
-  --font-size-h1-line: 4.5rem;
-  --font-size-h1-lg: 4.25rem;
-  --font-size-h1-line-lg: 4.5rem;
-  --font-size-h2: 3rem;
-  --font-size-h2-line: 3.25rem;
-  --font-size-h2-lg: 3rem;
-  --font-size-h2-line-lg: 3.25rem;
-  --font-size-h3: 1.5rem;
-  --font-size-h3-line: 1.75rem;
-  --font-size-h3-lg: 2rem;
-  --font-size-h3-line-lg: 2.25rem;
-  --font-size-h4: 1.375rem;
-  --font-size-h4-line: 1.625rem;
-  --font-size-h4-lg: 1.375rem;
-  --font-size-h4-line-lg: 1.625rem;
-  --font-size-body: 1.125rem;
-  --font-size-display-lg: 5.5rem;
-  --font-size-display-line-lg: 5.625rem;
+    /* ui-kit variable names (same values) – so kit typo/color classes use our design */
+    --color-orange: #FB5B33;
+    --color-orange-mid: #FFD0C7;
+    --color-orange-pastel: #FFEEEB;
+    --color-blue-pastel: #EDFBFF;
+    --color-neutral-ultradark: #1C2036;
+    --color-neutral-dark: #404569;
+    --color-neutral-gray: #9396AB;
+    --color-neutral-mid: #676B89;
+    --color-neutral-light: #C7C9DA;
+    --color-neutral-ultralight: #E8E9F1;
+    --color-neutral-bluishgrey: #E6E9FF;
+    --color-neutral-white: #FFFFFF;
+    --font-size-h1: 4.25rem;
+    --font-size-h1-line: 4.5rem;
+    --font-size-h1-lg: 4.25rem;
+    --font-size-h1-line-lg: 4.5rem;
+    --font-size-h2: 3rem;
+    --font-size-h2-line: 3.25rem;
+    --font-size-h2-lg: 3rem;
+    --font-size-h2-line-lg: 3.25rem;
+    --font-size-h3: 1.5rem;
+    --font-size-h3-line: 1.75rem;
+    --font-size-h3-lg: 2rem;
+    --font-size-h3-line-lg: 2.25rem;
+    --font-size-h4: 1.375rem;
+    --font-size-h4-line: 1.625rem;
+    --font-size-h4-lg: 1.375rem;
+    --font-size-h4-line-lg: 1.625rem;
+    --font-size-body: 1.125rem;
+    --font-size-display-lg: 5.5rem;
+    --font-size-display-line-lg: 5.625rem;
+}
+
+:root {
+    --color-orange: #FB5B33;
+    --color-orange-mid: #FFD0C7;
+    --color-orange-pastel: #FFEEEB;
+    --color-blue-pastel: #EDFBFF;
+    --color-neutral-ultradark: #1C2036;
+    --color-neutral-dark: #404569;
+    --color-neutral-gray: #9396AB;
+    --color-neutral-mid: #676B89;
+    --color-neutral-light: #C7C9DA;
+    --color-neutral-ultralight: #E8E9F1;
+    --color-neutral-bluishgrey: #E6E9FF;
+    --color-neutral-white: #FFFFFF;
 }
 
 /* ── Master app.css global rules ── */
@@ -140,7 +155,8 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: #fff;
+    background: #FFF;
+    background: linear-gradient(0deg, rgba(255, 255, 255, 1) 90%, rgba(231, 232, 242, 1) 100%);
 }
 
 img {
@@ -159,173 +175,6 @@ a {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-}
-
-.btn {
-    border-radius: 12px;
-    padding-top: 16px;
-    padding-right: 24px;
-    padding-bottom: 16px;
-    padding-left: 24px;
-    line-height: 14px !important;
-    max-height: 48px;
-
-    &.btn-outline {
-        border: 2px solid var(--color-neutralUltraDark)
-    }
-}
-
-/* Header */
-/*.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    background: #FF7A59;
-    z-index: 1000;
-    padding: 20px 0;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.header-container {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 0 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo-text {
-    color: #fff;
-    line-height: 1.2;
-}
-
-.logo-title {
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    text-transform: lowercase;
-}
-
-.logo-main {
-    font-size: 32px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    margin: -2px 0;
-    text-transform: uppercase;
-}
-
-.logo-subtitle {
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 0.5px;
-    opacity: 0.9;
-}
-
-.nav {
-    display: flex;
-    align-items: center;
-    gap: 35px;
-}
-
-.nav a {
-    font-size: 15px;
-    font-weight: 500;
-    color: #fff;
-    transition: opacity 0.3s ease;
-    position: relative;
-}
-
-.nav a:hover {
-    opacity: 0.85;
-}
-
-.btn-register {
-    background: #fff;
-    color: #FF7A59 !important;
-    padding: 12px 30px;
-    border-radius: 25px;
-    font-weight: 600;
-    font-size: 14px;
-    letter-spacing: 0.5px;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-}
-
-.btn-register:hover {
-    opacity: 1 !important;
-    background: #f5f5f5;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}*/
-
-/* Hero Section - 2/3 image, 1/3 content */
-.hero {
-    margin-top: 80px;
-    position: relative;
-    min-height: 600px;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    background: #FF7A59;
-}
-
-.hero-content {
-    width: 33.333%;
-    padding: 60px 50px;
-    z-index: 2;
-    position: relative;
-}
-
-.hero h1 {
-    font-size: 48px;
-    font-weight: 700;
-    margin-bottom: 30px;
-    color: #fff;
-    line-height: 1.1;
-    letter-spacing: 1px;
-}
-
-.hero-meta {
-    margin-bottom: 30px;
-}
-
-.hero-meta p {
-    font-size: 16px;
-    color: #fff;
-    margin: 5px 0;
-    font-weight: 400;
-}
-
-.hero-meta p:first-child::before {
-    content: '—';
-    margin-right: 10px;
-}
-
-.hero-image {
-    position: absolute;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 1;
-}
-
-.hero-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-}
-
-.hero-image .mobile-image {
-    display: none;
 }
 
 /* Section Content */
@@ -371,14 +220,6 @@ a {
 .event-details {
     padding: 60px 20px;
     background: #f8f9fa;
-}
-
-.event-image {
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
 /* Program Section */
@@ -732,13 +573,6 @@ a {
     height: 80px;
     min-width: 75px;
     filter: brightness(0) invert(1);
-}
-
-/* Responsive Design */
-@media (min-width: 769px) {
-    .hero-content {
-        margin-left: 40px;
-    }
 }
 
 @media (max-width: 1024px) {
