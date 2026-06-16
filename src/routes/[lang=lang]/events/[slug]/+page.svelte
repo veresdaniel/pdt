@@ -3,6 +3,9 @@
     import { PrimaryNavigation, Section } from "@ergodot/ui-kit";
     import Registration from "$lib/components/Registration.svelte";
     import Button from "$lib/components/Button.svelte";
+    import Tag from "$lib/components/Tag.svelte";
+    import CalendarIcon from "$lib/assets/calendar.svg";
+    import PinIcon from "$lib/assets/pin.svg";
     import { page } from "$app/state";
     import defaultSpeakerLogo from "$lib/assets/ergomania-logo-colored-on-dark-big.svg";
 
@@ -71,7 +74,7 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>{data.event.title.toUpperCase()}</h1>
+            <h1>{data.event.title}</h1>
             <div class="hero-meta">
                 <p>{formatDateTime(data.event.dateTime)}</p>
                 <p>{data.event.location}</p>
@@ -95,9 +98,8 @@
 
     <!-- general info -->
     {#if data.event.featuredImageUrl}
-        <div class="row">
-            <!-- Product Design Talks Section -->
-            <div class="col-6">
+        <div class="container">
+            <div class="half">
                 <div class="general-info-desc">
                     {#if data.event.subtitle}
                         <h2>{data.event.subtitle}</h2>
@@ -108,7 +110,7 @@
                 </div>
             </div>
 
-            <div class="col-6">
+            <div class="half">
                 <img
                     src={data.event.featuredImageUrl}
                     alt={data.event.title}
@@ -118,17 +120,30 @@
         </div>
     {/if}
 
-    <!-- Program Section -->
-    <section id="program" class="section-content program-section">
-        <div class="container">
-            {#if data.event.header}
-                <h2>{@html data.event.header}</h2>
-            {/if}
-            {#if data.event.subHeader}
-                <h3>{@html data.event.subHeader}</h3>
-            {/if}
+    <!-- longer description ??? -->
+    <div class="container">
+        <div class="three-quarter">
+            <div class="longer-desc">
+                <h3>{data.event.title}</h3>
+                {#if data.event.description}
+                    {@html data.event.description}
+                {/if}
+            </div>
         </div>
-    </section>
+        <div class="quarter">
+            <Tag
+                title="Date"
+                text={formatDateTime(data.event.dateTime)}
+                icon={CalendarIcon}
+            />
+            <Tag title="Location" text={data.event.location} icon={PinIcon} />
+
+            <div class="btn-holder">
+                <Button label="Regisztálok" variant="highlighted" />
+                <Button label="Megosztom" variant="secondary" />
+            </div>
+        </div>
+    </div>
 
     <!-- Timeline/Schedule Section -->
     {#if data.event.programs && data.event.programs.length > 0}
@@ -149,17 +164,13 @@
                                 </div>
                             {/if}
 
-                            <h2>{program.title}</h2>
+                            <h3>{program.title}</h3>
 
                             {#if program.subtitle}
-                                <h3>{program.subtitle}</h3>
+                                <p>{program.subtitle}</p>
                             {/if}
 
                             {#if program.speakers && program.speakers.length > 0}
-                                <div class="fireside-header">
-                                    <h3>{program.title}</h3>
-                                </div>
-
                                 <div class="speakers">
                                     {#each program.speakers as speaker}
                                         <div class="speaker">
@@ -169,21 +180,16 @@
                                                     alt={speaker.name}
                                                 />
                                             {/if}
+                                            <h4>{speaker.name}</h4>
+                                            <div class="spacer"></div>
+                                            {#if speaker.description}
+                                                <span
+                                                    >{speaker.description}</span
+                                                >
+                                            {/if}
                                         </div>
                                     {/each}
                                 </div>
-
-                                <h4>
-                                    {#each program.speakers as speaker, i}
-                                        <b>{speaker.name}</b
-                                        >{#if speaker.description}
-                                            &nbsp;- {speaker.description}
-                                        {/if}
-                                        {#if i < program.speakers.length - 1}
-                                            <br />
-                                        {/if}
-                                    {/each}
-                                </h4>
                             {:else}
                                 <div class="speakers">
                                     <div class="speaker default-speaker">

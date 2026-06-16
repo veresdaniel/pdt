@@ -25,7 +25,7 @@
         children,
     } = p;
 
-    let classes = `${variant} ${background}`
+    let classes = `${variant} ${background}`;
 </script>
 
 <button class="btn {classes}" {type} {disabled} {onclick}>
@@ -43,14 +43,38 @@
         font-weight: 600;
         background-color: var(--color-neutral-ultradark);
         min-width: 145px;
-        
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        &.secondary {
+           color: var(--color-neutral-ultradark);
+           border: 2px solid;
+           border-color: var(--color-neutral-ultradark);
+           background-color: transparent;
+
+           &:hover {
+            border-color: var(--color-orange);
+        }
+
+        }
+
         &.highlighted {
             background-color: var(--color-orange);
+
+            &:hover {
+                color: var(--color-orange-mid);
+            }
         }
 
         &.text {
             color: var(--color-neutral-ultradark);
             background-color: transparent;
+
+            &:hover {
+                color: var(--color-neutral-dark);
+            }
         }
     }
 </style>
