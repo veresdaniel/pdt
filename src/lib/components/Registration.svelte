@@ -5,6 +5,8 @@
     import { get } from "svelte/store";
     import CityAutocomplete from "./CityAutocomplete.svelte";
     import type { City } from "$lib/models/city.model";
+    import regIcon from "$lib/assets/registration-icon.png";
+    import Button from "./Button.svelte";
 
     export let eventId: number;
 
@@ -20,6 +22,7 @@
         email: "",
         phone: "",
         company: "",
+        position: "",
         city: null,
     };
     function validateForm(): boolean {
@@ -169,6 +172,9 @@
                                 bind:value={formData.lastName}
                                 oninput={() => clearError("lastName")}
                                 class:error={errors.lastName}
+                                placeholder={$t(
+                                    "registration.fields.your.lastName",
+                                )}
                             />
                             {#if errors.lastName}
                                 <span class="error-text">{errors.lastName}</span
@@ -190,6 +196,9 @@
                                 bind:value={formData.firstName}
                                 oninput={() => clearError("firstName")}
                                 class:error={errors.firstName}
+                                placeholder={$t(
+                                    "registration.fields.your.firstName",
+                                )}
                             />
                             {#if errors.firstName}
                                 <span class="error-text"
@@ -212,9 +221,36 @@
                                 bind:value={formData.company}
                                 oninput={() => clearError("company")}
                                 class:error={errors.company}
+                                placeholder={$t(
+                                    "registration.fields.your.company",
+                                )}
                             />
                             {#if errors.company}
                                 <span class="error-text">{errors.company}</span>
+                            {/if}
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">
+                                {$t("registration.fields.position")}<span
+                                    class="optional"
+                                    >{$t("registration.optional")}</span
+                                >
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                bind:value={formData.position}
+                                oninput={() => clearError("position")}
+                                class:error={errors.position}
+                                placeholder={$t(
+                                    "registration.fields.your.position",
+                                )}
+                            />
+                            {#if errors.position}
+                                <span class="error-text">{errors.position}</span
+                                >
                             {/if}
                         </div>
 
@@ -232,16 +268,14 @@
                                 bind:value={formData.email}
                                 oninput={() => clearError("email")}
                                 class:error={errors.email}
+                                placeholder={$t(
+                                    "registration.fields.your.email",
+                                )}
                             />
                             {#if errors.email}
                                 <span class="error-text">{errors.email}</span>
                             {/if}
                         </div>
-                        <CityAutocomplete
-                            bind:value={formData.city}
-                            error={errors.city || ""}
-                            onSelect={handleCitySelect}
-                        />
                         <div class="form-group">
                             <label for="phone"
                                 >{$t("registration.fields.phone")}</label
@@ -253,34 +287,42 @@
                                 bind:value={formData.phone}
                                 oninput={() => clearError("phone")}
                                 class:error={errors.phone}
+                                placeholder={$t(
+                                    "registration.fields.your.phone",
+                                )}
                             />
                             {#if errors.phone}
                                 <span class="error-text">{errors.phone}</span>
                             {/if}
                         </div>
 
+                        <Button
+                            type="submit"
+                            disabled={isSubmitting}
+                            variant="highlighted"
+                            label={isSubmitting
+                                ? $t("registration.submitting")
+                                : $t("registration.submit")}
+                        />
+
+                        <p class="form-terms-of-use">
+                            {$t("registration.disclaimer")}
+                        </p>
+
+                        <p class="form-important">{$t("registration.important")}</p>
+                        <p class="form-disclaimer">
+                            {$t("registration.disclaimer")}
+                        </p>
                         <p class="form-disclaimer">
                             {$t("registration.disclaimer")}
                         </p>
 
-                        <button
-                            type="submit"
-                            class="btn-submit-coral"
-                            disabled={isSubmitting}
-                        >
-                            {isSubmitting
-                                ? $t("registration.submitting")
-                                : $t("registration.submit")}
-                        </button>
                     </form>
                 {/if}
             </div>
 
             <div class="registration-image">
-                <img
-                    src="https://productdesigntalks.ergomania.eu/wp-content/uploads/2024/04/ergomania_pdt_ams.jpg"
-                    alt="Event"
-                />
+                <img src={regIcon} alt="Event" />
             </div>
         </div>
     </div>
@@ -292,17 +334,22 @@
         margin-left: 4px;
     }
 
+    .optional {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 20px;
+        color: var(--color-neutral-gray);
+    }
+
     .form-group input {
-        padding: 0.75rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
+        color: var(--color-neutral-ultradark);
         font-size: 1rem;
-        transition: border-color 0.3s;
+        padding-bottom: 12px;
+        border-bottom-width: 1px;
     }
 
     .form-group input:focus {
         outline: none;
-        border-color: #ff7a59;
     }
 
     input.error {
@@ -340,32 +387,4 @@
         margin-bottom: 1rem;
     }
 
-    .form-disclaimer {
-        font-size: 0.875rem;
-        color: #666;
-        line-height: 1.5;
-        margin-top: 0.5rem;
-    }
-
-    .btn-submit-coral {
-        background-color: #ff7a59;
-        color: white;
-        border: none;
-        padding: 1rem 2rem;
-        font-size: 1rem;
-        font-weight: 600;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s;
-        margin-top: 1rem;
-    }
-
-    .btn-submit-coral:hover:not(:disabled) {
-        background-color: #ff6340;
-    }
-
-    .btn-submit-coral:disabled {
-        opacity: 0.6;
-        cursor: not-allowed;
-    }
 </style>

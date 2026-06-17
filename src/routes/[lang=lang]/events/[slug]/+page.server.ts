@@ -36,10 +36,26 @@ export const load: PageServerLoad = async ({ params, locals, fetch }) => {
       'x-language': lang
     }
   });
+
   if (!eventResponse.ok) {
     error(404)
   }
   const event = await eventResponse.json();
 
-  return { event, events, menuItems };
+    const footerContentRes = await fetch(`${API_BASE_URL}/content/public/6/11/0`, {
+    headers: {
+      'x-language': lang
+    }
+  });
+
+  const footerContactPersonsRes = await fetch(`${API_BASE_URL}/content/public/6/12/1`, {
+    headers: {
+      'x-language': lang
+    }
+  });
+  const footerContent = await footerContentRes.json();
+  const footerContactPersons = await footerContactPersonsRes.json();
+
+
+  return { event, events, menuItems, footerContent, footerContactPersons };
 };

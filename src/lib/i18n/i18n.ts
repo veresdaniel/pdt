@@ -13,6 +13,10 @@ export const translations = {
             contact: 'Kapcsolat',
             register: 'REGISZTRÁLOK'
         },
+        event: {
+            program: "Programme",
+        },
+
         registration: {
             title: 'Regisztrálj',
             subtitle: 'Gyorsan töltődnek a helyek. Regisztrálj most!',
@@ -20,13 +24,24 @@ export const translations = {
                 lastName: 'Vezetéknév',
                 firstName: 'Keresztnév',
                 company: 'Cég',
+                position: 'Beosztás',
                 email: 'E-mail',
                 phone: 'Telefon',
-                city: "Város"
+                city: "Város",
+                your: {
+                    lastName: 'Vezetékneved',
+                    firstName: 'Keresztneved',
+                    company: 'A cég neve ahol dolgozol',
+                    position: 'A cég neve ahol dolgozol',
+                    email: 'your.email@example.com',
+                    phone: '+36 30 123 4567',
+                }
             },
+            important: 'Fontos megjegyzés:',
             disclaimer: 'A regisztrációval hozzájárulsz ahhoz, hogy az eseményről kapcsolódási és marketing célú kommunikációt küldjünk számodra. A létrehozásról bármikor leiratkozhatsz.',
             submit: 'Beküldés',
             required: '*',
+            optional: '(Opcionális)',
             submitting: 'Küldés...',
             success: '✓ Sikeres regisztráció!',
             newRegistration: 'Új regisztráció',
@@ -75,6 +90,9 @@ export const translations = {
             contact: 'Contact',
             register: 'REGISTER'
         },
+        event: {
+            program: "Programme",
+        },
         registration: {
             title: 'Register',
             subtitle: 'Spaces are filling up fast. Register now!',
@@ -82,13 +100,24 @@ export const translations = {
                 lastName: 'Last Name',
                 firstName: 'First Name',
                 company: 'Company',
+                position: 'Position',
                 email: 'E-mail',
                 phone: 'Phone',
-                city: "City"
+                city: "City",
+                your: {
+                    lastName: 'Your Last Name',
+                    firstName: 'Your First Name',
+                    company: 'Company, where you work',
+                    position: 'Your position',
+                    email: 'your.email@example.com',
+                    phone: '+36 30 123 4567',
+                }
             },
+            important: 'Fontos megjegyzés:',
             disclaimer: 'By registering, you agree to receive event-related and marketing communications from us. You can unsubscribe at any time.',
             submit: 'Submit',
             required: '*',
+            optional: '(Optional)',
             submitting: 'Submitting...',
             success: '✓ Registration successful!',
             newRegistration: 'New Registration',
@@ -136,18 +165,18 @@ export const translations = {
 function translate(locale: Locale, key: string, vars: Record<string, string> = {}): string {
     const keys = key.split('.');
     let value: any = translations[locale];
-    
+
     for (const k of keys) {
         value = value?.[k];
     }
-    
+
     if (typeof value !== 'string') return key;
-    
+
     let result = value;
     for (const [k, v] of Object.entries(vars)) {
         result = result.replace(`{${k}}`, v);
     }
-    
+
     return result;
 }
 

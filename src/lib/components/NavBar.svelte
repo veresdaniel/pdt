@@ -197,14 +197,12 @@
     text-align: center;
     font-size: 22px;
     line-height: 36px;
-    font-family: Poppins;
     font-weight: 500;
     font-style: Medium;
     border: 2px solid var(--color-neutralLight);
     color: var(--color-orangeDefault);
   }
   .step-title {
-    font-family: Poppins;
     font-weight: 600;
     font-size: 18px;
     line-height: 24px;

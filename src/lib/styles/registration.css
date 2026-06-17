@@ -1,0 +1,104 @@
+/* Event Registration */
+.event-registration {
+    padding: 0;
+    padding-bottom: 80px;
+    background: #fff;
+}
+
+.registration-wrapper {
+    padding: 64px;
+    max-width: none;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    background: url("../assets/registration-bg.svg") var(--color-orange-pastel);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+}
+
+.registration-form-container {}
+
+.registration-form-container h2 {
+    font-weight: 500;
+    font-size: 52px;
+    line-height: 56px;
+    color: var(--color-orange);
+    margin-bottom: 16px;
+}
+
+.form-subtitle {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: var(--color-neutral-dark);
+    margin-bottom: 24px;
+
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 20px;
+    color: var(--color-neutral-ultradark)
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"] {
+    color: var(--color-neutral-ultradark);
+    font-size: 1rem;
+    padding-bottom: 12px;
+    border-bottom-width: 1px;
+}
+
+.form-important {
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 14px;
+    line-height: 18px;
+    color: var(--color-neutral-ultradark);
+
+}
+
+.form-disclaimer {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 18px;
+    vertical-align: middle;
+    color: var(--color-neutral-gray)
+}
+
+.form-terms-of-use {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--color-neutral-gray)
+}
+
+.registration-image {
+    display: flex;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+}
+
+.registration-image img {
+    width: 150px;
+    height: 150px;
+}

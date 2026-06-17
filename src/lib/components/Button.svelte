@@ -43,6 +43,7 @@
         font-weight: 600;
         background-color: var(--color-neutral-ultradark);
         min-width: 145px;
+        width: min-content;
 
         &:hover {
             cursor: pointer;

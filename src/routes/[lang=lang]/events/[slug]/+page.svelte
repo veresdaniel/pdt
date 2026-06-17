@@ -1,5 +1,6 @@
 <script lang="ts">
-    import Footer from "$lib/components/Footer.svelte";
+    import { locale, t } from "$lib/i18n/i18n";
+    import Footer from "$lib/components/Footer/Footer.svelte";
     import { PrimaryNavigation, Section } from "@ergodot/ui-kit";
     import Registration from "$lib/components/Registration.svelte";
     import Button from "$lib/components/Button.svelte";
@@ -45,6 +46,13 @@
         if (!date) return "";
         return `${formatDate(date)}, ${formatTime(date)}`;
     }
+
+    function scrollToId(id) {
+        const element = document.getElementById(id);
+        element?.scrollIntoView({
+            behavior: "smooth",
+        });
+    }
 </script>
 
 <svelte:head>
@@ -79,7 +87,11 @@
                 <p>{formatDateTime(data.event.dateTime)}</p>
                 <p>{data.event.location}</p>
             </div>
-            <Button label="Regisztálok" variant="highlighted" />
+            <Button
+                label="Regisztálok"
+                variant="highlighted"
+                onclick={() => scrollToId("eventRegistration")}
+            />
             <Button label="Hozzáadom a naptáramhoz" variant="text" />
         </div>
         <div class="hero-image">
@@ -139,7 +151,11 @@
             <Tag title="Location" text={data.event.location} icon={PinIcon} />
 
             <div class="btn-holder">
-                <Button label="Regisztálok" variant="highlighted" />
+                <Button
+                    label="Regisztálok"
+                    variant="highlighted"
+                    onclick={() => scrollToId("eventRegistration")}
+                />
                 <Button label="Megosztom" variant="secondary" />
             </div>
         </div>
@@ -149,6 +165,9 @@
     {#if data.event.programs && data.event.programs.length > 0}
         <section class="timeline">
             <div class="container">
+                <h2>
+                    {$t("event.program")}
+                </h2>
                 {#each data.event.programs as program}
                     <div class="timeline-item">
                         <div class="timeline-time">
@@ -214,4 +233,7 @@
     <Registration eventId={data.event.id} />
 </div>
 
-<Footer />
+<Footer
+    content={data?.footerContent}
+    contactPersons={data?.footerContactPersons}
+/>

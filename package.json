@@ -20,7 +20,11 @@
     "svelte": "5.56.3",
     "svelte-check": "4.6.0",
     "typescript": "6.0.3",
-    "vite": "8.0.16"
+    "vite": "8.0.16",
+    "@tailwindcss/postcss": "4.2.2",
+    "postcss": "8.5.8",
+    "postcss-load-config": "6.0.1",
+     "autoprefixer": "10.4.27"
   },
   "dependencies": {
     "@sveltejs/adapter-vercel": "6.3.3",
