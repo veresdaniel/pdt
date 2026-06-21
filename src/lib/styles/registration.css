@@ -102,3 +102,27 @@
     width: 150px;
     height: 150px;
 }
+
+@media (max-width: 768px) {
+    #eventRegistration .container {
+        margin: 0;
+    }
+
+    .registration-form-container {
+        padding: 40px 30px;
+    }
+
+    .registration-form-container h2 {
+        font-size: 32px;
+    }
+
+
+    .registration-wrapper {
+        padding: 0;
+        grid-template-columns: 1fr;
+    }
+
+    .registration-image {
+        display: none;
+    }
+}

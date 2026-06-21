@@ -81,7 +81,37 @@ export const translations = {
                     title: 'Kapcsolat'
                 }
             }
-        }
+        },
+
+        "COMMON": {
+            "PRIVACY_POLICY": "Adatvédelmi irányelvek",
+            "COMPANY_NAME": "Ergomania kft.",
+            "IMPRINT": "Impresszum",
+            "SERVICES": "Szolgáltatások",
+            "COMPANY": "Rólunk",
+            "LEARN": "Tudástár",
+            "OFFICES": "Irodák",
+            "BLOG": "Blog",
+            "TEAM": "Csapat",
+        },
+        "UX_SERVICES": {
+            "TITLE": "UX Szolgáltatások",
+            "DESCRIPTION": "Az UX-hez való megközelítésünk túlmutat a vizuális tervezésen. Teljes körű felelősséget vállalunk, kezdve a kezdeti az érdekeltek interjújával, folytatva minden szakaszon keresztül, és végül egy csiszolt digitális termék. ",
+            "SERVICE_CATEGORIES": {
+                "DEFINE": "Meghatároz",
+                "DESIGN": "Tervezés",
+                "DEVELOP": "Fejlesztés",
+                "DISCOVER": "Felfedezés",
+                "EDUCATION": "Oktatás",
+                "AI": "AI"
+            }
+        },
+        "OFFICE_ADDRESS": {
+            "BUDAPEST": "Budapest",
+            "BUDAPEST_ADDRESS": "1114 Bartók Béla u. 39.",
+            "AMSTERDAM": "Amszterdam",
+            "AMSTERDAM_ADDRESS": "Herengracht 124-128, 1015 BT <br /> Amszterdam, Hollandia"
+        },
     },
     en: {
         nav: {
@@ -157,7 +187,35 @@ export const translations = {
                     title: 'Contact'
                 }
             }
-        }
+        },
+        "COMMON": {
+            "BLOG": "Blog",
+            "COMPANY_NAME": "Ergomania kft.",
+            "COMPANY": "Company",
+            "IMPRINT": "Imprint",
+            "LEARN": "Learn",
+            "OFFICES": "Offices",
+            "PRIVACY_POLICY": "Privacy Policy",
+            "SERVICES": "Services",
+            "TEAM": "Team",
+        },
+        "OFFICE_ADDRESS": {
+            "BUDAPEST": "Budapest",
+            "BUDAPEST_ADDRESS": "1114 Bartók Béla street 39.",
+            "AMSTERDAM": "Amsterdam",
+            "AMSTERDAM_ADDRESS": "Herengracht 124-128, 1015 BT <br /> Amsterdam, Netherlands"
+        }, "UX_SERVICES": {
+            "TITLE": "UX Services",
+            "DESCRIPTION": "Our approach to UX extends beyond designing visuals. We embrace end-to-end responsibility, starting from the initial stakeholder interview and continuing through every stage, culminating in a polished digital product.",
+            "SERVICE_CATEGORIES": {
+                "DEFINE": "Define",
+                "DESIGN": "Design",
+                "DEVELOP": "Develop",
+                "DISCOVER": "Discover",
+                "EDUCATION": "Education",
+                "AI": "AI"
+            }
+        },
     }
 } as const;
 
