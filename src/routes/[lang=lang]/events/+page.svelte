@@ -1,0 +1,196 @@
+<script lang="ts">
+    import Footer from "$lib/components/Footer/Footer.svelte";
+    import { PrimaryNavigation, Section } from "@ergodot/ui-kit";
+    import Switch from "$lib/components/Switch.svelte";
+    import Button from "$lib/components/Button.svelte";
+    import { page } from "$app/state";
+    import { locale, t } from "$lib/i18n/i18n";
+
+    let { data } = $props();
+    let isPDT = $state(true);
+
+    const languages = [
+        { title: "EN", value: "en" },
+        { title: "HU", value: "hu" },
+    ];
+
+    function formatDate(date) {
+        if (!date) return "";
+        const d = new Date(date);
+        return d.toLocaleDateString(
+            page.params.lang === "hu" ? "hu-HU" : "en-US",
+            {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+            },
+        );
+    }
+
+    function formatTime(date) {
+        if (!date) return "";
+        const d = new Date(date);
+        return d.toLocaleTimeString(
+            page.params.lang === "hu" ? "hu-HU" : "en-US",
+            {
+                hour: "2-digit",
+                minute: "2-digit",
+            },
+        );
+    }
+
+    function formatDateTime(date) {
+        if (!date) return "";
+        return `${formatDate(date)}, ${formatTime(date)}`;
+    }
+</script>
+
+<Section
+    marginTop={false}
+    marginBottom={false}
+    padding="none"
+    class="app-content-wrapper w-full"
+>
+    <PrimaryNavigation menuItems={data.menuItems} {languages} sticky={true} />
+
+    <div class="greating">
+        <h2>Events where you can meet us</h2>
+        <p>
+            We regularly participate in industry events, conferences, and
+            meetups where we exchange ideas, present our work, and connect with
+            designers, product teams, and business leaders.
+        </p>
+
+        <Switch
+            isPDT
+            options={["Product Design Talks", "Business Breakfasts"]}
+        />
+    </div>
+</Section>
+
+<div class="event-wrapper">
+    <!-- Hero Section -->
+    <section class="hero next-event">
+        <div class="hero-content">
+            <div class="hero-meta">
+                <p>2026 február 25., Csütörtök, 9:00</p>
+                <p>Ergománia Iroda, 1114 Budapest, Bartók Béla út 39.</p>
+            </div>
+            <h1>Nem az AI képességein múlik a siker, hanem a döntéseken</h1>
+            <p class="hero-short">
+                Üzleti reggelink célja, hogy a magyar kereskedelmi, banki és
+                e-commerce szektor szakértőit és döntéshozóit egy asztalhoz
+                ültessük,
+            </p>
+            <div>
+                <Button label="Regisztálok" variant="highlighted" />
+                <Button label="Részletek" variant="secondary" />
+            </div>
+        </div>
+        <div class="hero-image">
+            <img
+                src="//eregocdn-b22b.kxcdn.com/ergomania-talks/desktop/bg@3x.png"
+                alt="Talks"
+                class="desktop-image"
+            />
+            <img
+                src="//eregocdn-b22b.kxcdn.com/ergomania-talks/mobile/bg@3x-mobile.png"
+                alt="Talks"
+                class="mobile-image"
+            />
+        </div>
+    </section>
+
+    <section class="container future-events">
+        <h2>Upcoming events</h2>
+        <div class="events">
+            {#each data.futureEvents.slice(0, 2) as event}
+                <a href={`${event.slug}`}>
+                    <div class="event">
+                        <div style="min-height: 302px;">
+                            <span class="location">{event.location}</span>
+                            <div class="event-image">
+                                <img src={event.featuredImageUrl} alt="event" />
+                            </div>
+                        </div>
+                        <div class="event-info">
+                            <p class="date">{formatDate(event.dateTime)}</p>
+                            <p class="title">{event.title}</p>
+                            <p class="desc">{event.description}</p>
+                        </div>
+                    </div>
+                </a>
+            {:else}{/each}
+        </div>
+    </section>
+
+    <section class="container past-events">
+        <h2>Past events</h2>
+        <div class="events">
+            {#each data.pastEvents.slice(0, 3) as event}
+                <a href={`${event.slug}`}>
+                    <div class="event">
+                        <div style="min-height: 302px;">
+                            <span class="location">{event.location}</span>
+                            <div class="event-image">
+                                <img src={event.featuredImageUrl} alt="event" />
+                            </div>
+                        </div>
+                        <div class="event-info">
+                            <p class="date">{formatDate(event.dateTime)}</p>
+                            <p class="title">{event.title}</p>
+                            <p class="desc">{event.description}</p>
+                        </div>
+                    </div>
+                </a>
+            {:else}{/each}
+        </div>
+    </section>
+
+    <section class="container past-presenters">
+        <h2>Past presenters</h2>
+    </section>
+
+    <section class="container">
+        <h2>Why you should join our events?</h2>
+    </section>
+
+    <section class="subscirbe">
+        <div class="left">
+            <h1>Want to Read More About UX, Banking & Fintech?</h1>
+            <div class="presenter">
+                <img alt="fasz" src="https://picsum.photos/64" />
+                <div style="padding: 8px 0;">
+                    <p class="name">Maria Amidi Nouri</p>
+                    <p class="position">UX Architect</p>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <p>
+                Subscribe to our biweekly newsletter and get the latest of our
+                news and thoughts!
+            </p>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder={$t("registration.fields.your.position")}
+            />
+            <p>
+                By pressing Subscribe, you agree to our Terms and Conditions and
+                Privacy Policy.
+            </p>
+
+            <div>
+                <Button label="Subscribe" variant="highlighted" />
+                <Button label="Earlier Newsletters" variant="text" />
+            </div>
+        </div>
+    </section>
+</div>
+
+<Footer
+    content={data?.footerContent}
+    contactPersons={data?.footerContactPersons}
+/>

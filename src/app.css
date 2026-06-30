@@ -196,6 +196,10 @@ a {
     transition: color 0.3s ease;
 }
 
+.main-content {
+    max-width: 1760px;
+    margin: 0 auto;
+} 
 
 /* Section Content */
 .section-content {

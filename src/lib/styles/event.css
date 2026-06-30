@@ -10,13 +10,13 @@
 }
 
 .container {
-    padding-left: 110px;
     display: flex;
     flex-direction: row;
     gap: 80px;
     width: 100%;
+    max-width: 1130px;
+    margin: 0 auto;
     margin-bottom: 120px;
-    max-width: unset !important;
 
     @media (max-width: 1200px) {
         padding: 0;
@@ -74,7 +74,8 @@
     margin-bottom: 40px;
 }
 
-.hero-meta p {
+.hero-meta p,
+.hero-short {
     font-size: 18px;
     color: var(--color-neutral-mid);
     margin: 5px 0;
@@ -369,7 +370,7 @@
         display: block;
     }
 
-    
+
     .timeline {
         padding: 50px 20px;
     }

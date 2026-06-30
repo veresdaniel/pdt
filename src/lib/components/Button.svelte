@@ -43,22 +43,22 @@
         font-weight: 600;
         background-color: var(--color-neutral-ultradark);
         min-width: 145px;
-        width: min-content;
+        width: max-content;
 
         &:hover {
             cursor: pointer;
         }
 
         &.secondary {
-           color: var(--color-neutral-ultradark);
-           border: 2px solid;
-           border-color: var(--color-neutral-ultradark);
-           background-color: transparent;
+            color: var(--color-neutral-ultradark);
+            border: 2px solid;
+            padding: 11px 22px;
+            border-color: var(--color-neutral-ultradark);
+            background-color: transparent;
 
-           &:hover {
-            border-color: var(--color-orange);
-        }
-
+            &:hover {
+                border-color: var(--color-orange);
+            }
         }
 
         &.highlighted {
