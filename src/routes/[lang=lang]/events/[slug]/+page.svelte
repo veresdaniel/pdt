@@ -12,11 +12,6 @@
 
     let { data } = $props();
 
-    const languages = [
-        { title: "EN", value: "en" },
-        { title: "HU", value: "hu" },
-    ];
-
     function formatDate(date) {
         if (!date) return "";
         const d = new Date(date);
@@ -68,15 +63,6 @@
     <meta property="og:type" content="event" />
     <meta property="og:description" content={data.event.subtitle} />
 </svelte:head>
-
-<Section
-    marginTop={false}
-    marginBottom={false}
-    padding="none"
-    class="app-content-wrapper w-full"
->
-    <PrimaryNavigation menuItems={data.menuItems} {languages} sticky={true} />
-</Section>
 
 <div class="event-wrapper">
     <!-- Hero Section -->

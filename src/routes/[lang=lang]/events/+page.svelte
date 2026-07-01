@@ -1,6 +1,6 @@
 <script lang="ts">
     import Footer from "$lib/components/Footer/Footer.svelte";
-    import { PrimaryNavigation, Section } from "@ergodot/ui-kit";
+    import { Section } from "@ergodot/ui-kit";
     import Switch from "$lib/components/Switch.svelte";
     import Button from "$lib/components/Button.svelte";
     import { page } from "$app/state";
@@ -8,11 +8,6 @@
 
     let { data } = $props();
     let isPDT = $state(true);
-
-    const languages = [
-        { title: "EN", value: "en" },
-        { title: "HU", value: "hu" },
-    ];
 
     function formatDate(date) {
         if (!date) return "";
@@ -51,7 +46,6 @@
     padding="none"
     class="app-content-wrapper w-full"
 >
-    <PrimaryNavigation menuItems={data.menuItems} {languages} sticky={true} />
 
     <div class="greating">
         <h2>Events where you can meet us</h2>
@@ -105,7 +99,7 @@
         <h2>Upcoming events</h2>
         <div class="events">
             {#each data.futureEvents.slice(0, 2) as event}
-                <a href={`${event.slug}`}>
+                <a href={`events/${event.slug}`}>
                     <div class="event">
                         <div style="min-height: 302px;">
                             <span class="location">{event.location}</span>
@@ -128,7 +122,7 @@
         <h2>Past events</h2>
         <div class="events">
             {#each data.pastEvents.slice(0, 3) as event}
-                <a href={`${event.slug}`}>
+                <a href={`events/${event.slug}`}>
                     <div class="event">
                         <div style="min-height: 302px;">
                             <span class="location">{event.location}</span>
