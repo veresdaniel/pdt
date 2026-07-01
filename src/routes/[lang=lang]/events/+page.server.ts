@@ -28,13 +28,6 @@ export const load: PageServerLoad = async ({ params, locals, fetch }) => {
       'x-language': lang
     }
     });
-    const menuItems = await menuRes.json();
-    menuItems.sort((a:any ,b:any) => a.headerIndex - b.headerIndex);
-    menuItems[0].categoryChildren = uxServicesCategories;
-    menuItems.splice(menuItems.length - 1, 0, eventsMenu);
-
-
-
 
     const footerContentRes = await fetch(`${API_BASE_URL}/content/public/6/11/0`, {
     headers: {
@@ -73,5 +66,5 @@ export const load: PageServerLoad = async ({ params, locals, fetch }) => {
   });
 
 
-  return { menuItems, footerContent, footerContactPersons, allEvents, pastEvents, futureEvents };
+  return { footerContent, footerContactPersons, allEvents, pastEvents, futureEvents };
 };

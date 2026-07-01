@@ -14,17 +14,6 @@ export const load: PageServerLoad = async ({ params, locals, fetch }) => {
     }
   })
 
-    const menuRes = await fetch(`${API_BASE_URL}/MenuItems/GetMenuItems`, {
-      headers: {
-      'x-language': lang
-    }
-    });
-    const menuItems = await menuRes.json();
-    menuItems.sort((a:any ,b:any) => a.headerIndex - b.headerIndex);
-    menuItems[0].categoryChildren = uxServicesCategories;
-    menuItems.splice(menuItems.length - 1, 0, eventsMenu);
-
-
   const events: EventInfo[] = await eventsResponse.json();
 
   if (locals.upcomingEvent && params.slug === locals.upcomingEvent.slug) {
@@ -57,5 +46,5 @@ export const load: PageServerLoad = async ({ params, locals, fetch }) => {
   const footerContactPersons = await footerContactPersonsRes.json();
 
 
-  return { event, events, menuItems, footerContent, footerContactPersons };
+  return { event, events, footerContent, footerContactPersons };
 };
