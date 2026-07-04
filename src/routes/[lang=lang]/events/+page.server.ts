@@ -14,32 +14,10 @@ export const load: PageServerLoad = async ({ params, fetch, locals }) => {
 
 import type { PageServerLoad } from './$types';
 import { API_BASE_URL } from '$env/static/private';
-import type { EventInfo } from '$lib/models/event-info.model';
-import { error } from '@sveltejs/kit';
 import type { IEvent } from '$lib/interfaces/eventInterface';
 
-export const load: PageServerLoad = async ({ params, locals, fetch }) => {
+export const load: PageServerLoad = async ({ params, fetch }) => {
   const lang = params.lang;
-
-    const menuRes = await fetch(`${API_BASE_URL}/MenuItems/GetMenuItems`, {
-      headers: {
-      'x-language': lang
-    }
-    });
-
-    const footerContentRes = await fetch(`${API_BASE_URL}/content/public/6/11/0`, {
-    headers: {
-      'x-language': lang
-    }
-  });
-
-  const footerContactPersonsRes = await fetch(`${API_BASE_URL}/content/public/6/12/1`, {
-    headers: {
-      'x-language': lang
-    }
-  });
-  const footerContent = await footerContentRes.json();
-  const footerContactPersons = await footerContactPersonsRes.json();
 
     const alleventre = await fetch(`${API_BASE_URL}/events`, {
     headers: {
@@ -64,5 +42,5 @@ export const load: PageServerLoad = async ({ params, locals, fetch }) => {
   });
 
 
-  return { footerContent, footerContactPersons, allEvents, pastEvents, futureEvents };
+  return { allEvents, pastEvents, futureEvents };
 };

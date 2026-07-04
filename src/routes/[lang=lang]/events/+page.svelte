@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Footer from "$lib/components/Footer/Footer.svelte";
     import { Section } from "@ergodot/ui-kit";
     import Switch from "$lib/components/Switch.svelte";
     import Button from "$lib/components/Button.svelte";
@@ -183,8 +182,3 @@
         </div>
     </section>
 </div>
-
-<Footer
-    content={data?.footerContent}
-    contactPersons={data?.footerContactPersons}
-/>

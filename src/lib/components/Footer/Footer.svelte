@@ -53,7 +53,7 @@
 				}
 
 				& > div {
-					@apply basis-[49%] sm:basis-0 sm:flex-1;
+					@apply basis-[49%] sm:basis-1;
 				}
 
 				.offices-wrapper {
@@ -69,7 +69,6 @@
 						}
 					}
 				}
-
 			}
 		}
 
@@ -93,13 +92,20 @@
 </style>
 
 <script lang="ts">
-	import { t } from "$lib/i18n/i18n";
+	import { t } from '$lib/i18n/i18n';
+	import type { ContactPerson } from '@ergodot/ui-kit';
 	import { ContactFormBlock } from '@ergodot/ui-kit';
 	import FooterSocial from './FooterSocial.svelte';
 	import Logo from '$lib/assets/ergomania-logo.svelte';
+	import type { buildFooterData } from '$lib/functions/common-content.mappers';
 
-  let { content, contactPersons } = $props();
-
+	let {
+		footerData,
+		contactPersons = []
+	}: {
+		footerData: ReturnType<typeof buildFooterData>;
+		contactPersons?: ContactPerson[];
+	} = $props();
 
 	function handleContactSubmit(_data: { name: string; email: string; message: string }) {
 		// TODO: submit to API (e.g. same as old contact form)
@@ -110,78 +116,75 @@
 	<div class="footer-content app-content-wrapper px-10">
 		<div class="section">
 			<ContactFormBlock
-				titlePart1={content?.titlePart1}
-				titlePart2={content?.titlePart2}
-				contactPersons={contactPersons}
-				phone={content?.phone}
-				email={content?.email}
-				namePlaceholder={content?.namePlaceholder}
-				emailPlaceholder={content?.emailPlaceholder}
-				messagePlaceholder={content?.messagePlaceholder}
-				privacyLabelBefore={content?.privacyLabelBefore}
-				privacyLinkText={content?.privacyLinkText}
-				privacyLinkUrl={content?.privacyLinkUrl}
-				privacyLabelAfter={content?.privacyLabelAfter}
-				submitButtonLabel={content?.submitButtonLabel}
+				titlePart1={footerData.titlePart1}
+				titlePart2={footerData.titlePart2}
+				{contactPersons}
+				phone={footerData.phone}
+				email={footerData.email}
+				namePlaceholder={footerData.namePlaceholder}
+				emailPlaceholder={footerData.emailPlaceholder}
+				messagePlaceholder={footerData.messagePlaceholder}
+				privacyLabelHtml={footerData.privacyLabelHtml}
+				submitButtonLabel={footerData.submitButtonLabel}
 				onSubmit={handleContactSubmit}
 			/>
 		</div>
 
 		<section class="footer-navigation text-body-sm text-white">
 			<div class="section main-wrapper">
-			<a href="https://ergomania.eu" class="brand-logo text-white">
-				<Logo />
-			</a>
-			<div class="text-white">
-				<div class="title text-body-sm">{$t('COMMON.SERVICES')}</div>
-				<ul class="text-body-sm text-white">
-					<li><a href="/ux-services/#discover" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DISCOVER')}</a></li>
-					<li><a href="/ux-services/#define" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DEFINE')}</a></li>
-					<li><a href="/ux-services/#design" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DESIGN')}</a></li>
-					<li><a href="/ux-services/#develop" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DEVELOP')}</a></li>
-					<li><a href="/ux-services/#education" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.EDUCATION')}</a></li>
-					<li><a href="/ux-services/" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.AI')}</a></li>
-				</ul>
-			</div>
-			<div class="text-white">
-				<div class="title text-body-sm">{$t('COMMON.COMPANY')}</div>
-				<ul class="text-body-sm text-white">
-					<li><a href="/ux-team/" class="text-white">{$t('COMMON.TEAM')}</a></li>
-					<li><a href="/imprint/" class="text-white">{$t('COMMON.IMPRINT')}</a></li>
-				</ul>
-			</div>
-			<div class="text-white">
-				<div class="title text-body-sm">{$t('COMMON.LEARN')}</div>
-				<ul class="text-body-sm text-white">
-					<li><a href="/ux-and-product-design-blog/" class="text-white">{$t('COMMON.BLOG')}</a></li>
-					<li></li>
-				</ul>
-			</div>
-			<div class="offices-wrapper text-white">
-				<div class="title text-body-sm">{$t('COMMON.OFFICES')}</div>
-				<div class="offices">
-					<div class="office text-body-sm">
-						<div class="title">{$t('OFFICE_ADDRESS.BUDAPEST')}</div>
-						<div>{@html $t('OFFICE_ADDRESS.BUDAPEST_ADDRESS')}</div>
-					</div>
-					<div class="office text-body-sm">
-						<div class="title">{$t('OFFICE_ADDRESS.AMSTERDAM')}</div>
-						<div>{@html $t('OFFICE_ADDRESS.AMSTERDAM_ADDRESS')}</div>
+				<a href="https://ergomania.eu" class="brand-logo text-white">
+					<Logo />
+				</a>
+				<div class="text-white">
+					<div class="title text-body-sm">{$t('COMMON.SERVICES')}</div>
+					<ul class="text-body-sm text-white">
+						<li><a href="/ux-services/#discover" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DISCOVER')}</a></li>
+						<li><a href="/ux-services/#define" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DEFINE')}</a></li>
+						<li><a href="/ux-services/#design" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DESIGN')}</a></li>
+						<li><a href="/ux-services/#develop" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DEVELOP')}</a></li>
+						<li><a href="/ux-services/#education" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.EDUCATION')}</a></li>
+						<li><a href="/ux-services/" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.AI')}</a></li>
+					</ul>
+				</div>
+				<div class="text-white">
+					<div class="title text-body-sm">{$t('COMMON.COMPANY')}</div>
+					<ul class="text-body-sm text-white">
+						<li><a href="/ux-team/" class="text-white">{$t('COMMON.TEAM')}</a></li>
+						<li><a href="/imprint/" class="text-white">{$t('COMMON.IMPRINT')}</a></li>
+					</ul>
+				</div>
+				<div class="text-white">
+					<div class="title text-body-sm">{$t('COMMON.LEARN')}</div>
+					<ul class="text-body-sm text-white">
+						<li><a href="/ux-and-product-design-blog/" class="text-white">{$t('COMMON.BLOG')}</a></li>
+						<li></li>
+					</ul>
+				</div>
+				<div class="offices-wrapper text-white">
+					<div class="title text-body-sm">{$t('COMMON.OFFICES')}</div>
+					<div class="offices">
+						<div class="office text-body-sm">
+							<div class="title">{$t('OFFICE_ADDRESS.BUDAPEST')}</div>
+							<div>{@html $t('OFFICE_ADDRESS.BUDAPEST_ADDRESS')}</div>
+						</div>
+						<div class="office text-body-sm">
+							<div class="title">{$t('OFFICE_ADDRESS.AMSTERDAM')}</div>
+							<div>{@html $t('OFFICE_ADDRESS.AMSTERDAM_ADDRESS')}</div>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="section sep"></div>
-		<section class="section bottom-links-wrapper">
-			<FooterSocial />
-			<div class="bottom-links text-white">
-				<ul class="text-body-sm text-white">
-					<li><a href="/privacy-policy/" class="break-all text-white">{$t('COMMON.PRIVACY_POLICY')}</a></li>
-					<li><a href="/imprint/" class="text-white">{$t('COMMON.IMPRINT')}</a></li>
-					<li>&copy; {new Date().getFullYear()} {$t('COMMON.COMPANY_NAME')}</li>
-				</ul>
-			</div>
+			<div class="section sep"></div>
+			<section class="section bottom-links-wrapper">
+				<FooterSocial />
+				<div class="bottom-links text-white">
+					<ul class="text-body-sm text-white">
+						<li><a href="/privacy-policy/" class="break-all text-white">{$t('COMMON.PRIVACY_POLICY')}</a></li>
+						<li><a href="/imprint/" class="text-white">{$t('COMMON.IMPRINT')}</a></li>
+						<li>&copy; {new Date().getFullYear()} {$t('COMMON.COMPANY_NAME')}</li>
+					</ul>
+				</div>
+			</section>
 		</section>
-	</section>
 	</div>
 </footer>

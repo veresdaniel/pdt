@@ -1,7 +1,6 @@
 <script lang="ts">
     import { locale, t } from "$lib/i18n/i18n";
-    import Footer from "$lib/components/Footer/Footer.svelte";
-    import { PrimaryNavigation, Section } from "@ergodot/ui-kit";
+    import { Section } from "@ergodot/ui-kit";
     import Registration from "$lib/components/Registration.svelte";
     import Button from "$lib/components/Button.svelte";
     import Tag from "$lib/components/Tag.svelte";
@@ -218,8 +217,3 @@
 
     <Registration eventId={data.event.id} />
 </div>
-
-<Footer
-    content={data?.footerContent}
-    contactPersons={data?.footerContactPersons}
-/>

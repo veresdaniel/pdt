@@ -1,24 +1,26 @@
 <script lang="ts">
 	import '@ergodot/ui-kit/styles.css';
-	import favicon from "$lib/assets/favicon.svg";
+	import favicon from '$lib/assets/favicon.svg';
 	import { page } from '$app/state';
 	import { get } from 'svelte/store';
-	import { localeStore } from "$lib/stores/locale.store.js";
-	import { DEFAULT_LOCALE, isValidLocale, type LocaleCode } from "$lib/types/locale.type.js";
-	//if its imported it will break the PrimaryNavigation and the footer CSS
-	//import Footer from "$lib/components/Footer/Footer.svelte";
-	import "../app.css";
-	import "../lib/styles/event.css";
-	import "../lib/styles/events.css";
-	import "../lib/styles/registration.css";
-	import { PrimaryNavigation, Section } from "@ergodot/ui-kit";
-	import { translations, type Locale } from "$lib/i18n/i18n.js";
+	import { localeStore } from '$lib/stores/locale.store.js';
+	import { DEFAULT_LOCALE, isValidLocale, type LocaleCode } from '$lib/types/locale.type.js';
+	import Footer from '$lib/components/Footer/Footer.svelte';
+	import '../app.css';
+	import '../lib/styles/event.css';
+	import '../lib/styles/events.css';
+	import '../lib/styles/registration.css';
+	import { PrimaryNavigation, Section } from '@ergodot/ui-kit';
+	import { translations, type Locale } from '$lib/i18n/i18n.js';
+	import { createFormatMissing } from '$lib/functions/formatMissingTranslation';
+	import { buildFooterData, buildFooterContactPersons } from '$lib/functions/common-content.mappers';
+	import type { IndexedContentItem } from '$lib/functions/cms-content.helpers';
 
 	let { data, children } = $props();
 
 	const LOCALE_OPTIONS = [
-		{ title: "EN", value: "en" },
-		{ title: "HU", value: "hu" },
+		{ title: 'EN', value: 'en' },
+		{ title: 'HU', value: 'hu' }
 	] as const;
 
 	function localeFromPath(pathname: string): LocaleCode | null {
@@ -34,13 +36,20 @@
 	const activeLocale = $derived.by((): LocaleCode => {
 		const fromUrl = localeFromPath(page.url.pathname);
 		if (fromUrl) return fromUrl;
+		if (data?.locale && isValidLocale(data.locale)) return data.locale;
 		return get(localeStore) ?? DEFAULT_LOCALE;
 	});
 
-	/**
-	 * PrimaryNavigation always picks languages[0] on mount as the displayed language.
-	 * Put the active locale first until ui-kit accepts an explicit selectedLanguage prop.
-	 */
+	const formatMissing = $derived.by(() => createFormatMissing(activeLocale));
+	const footerData = $derived.by(() => buildFooterData(data?.footerContent ?? null, formatMissing));
+	const footerContactPersons = $derived.by(() =>
+		buildFooterContactPersons(
+			(data?.footerContactPersons ?? []) as IndexedContentItem[],
+			formatMissing,
+			activeLocale
+		)
+	);
+
 	const languages = $derived.by(() => {
 		const active = LOCALE_OPTIONS.find((item) => item.value === activeLocale);
 		if (!active) return [...LOCALE_OPTIONS];
@@ -78,12 +87,8 @@
 <svelte:head>
 	<link rel="icon" href={favicon} />
 </svelte:head>
-<Section
-	marginTop={false}
-	marginBottom={false}
-	padding="none"
-	class="app-content-wrapper w-full px-10"
->
+
+<Section marginTop={false} marginBottom={false} padding="none" class="app-content-wrapper w-full px-10">
 	<div class="section">
 		<PrimaryNavigation
 			menuItems={data.menuItems}
@@ -94,4 +99,9 @@
 		/>
 	</div>
 </Section>
-{@render children()}
+
+<main class="flex-1 w-full">
+	{@render children?.()}
+</main>
+
+<Footer {footerData} contactPersons={footerContactPersons} />

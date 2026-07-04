@@ -29,20 +29,5 @@ export const load: PageServerLoad = async ({ params, locals, fetch }) => {
   }
   const event = await eventResponse.json();
 
-    const footerContentRes = await fetch(`${API_BASE_URL}/content/public/6/11/0`, {
-    headers: {
-      'x-language': lang
-    }
-  });
-
-  const footerContactPersonsRes = await fetch(`${API_BASE_URL}/content/public/6/12/1`, {
-    headers: {
-      'x-language': lang
-    }
-  });
-  const footerContent = await footerContentRes.json();
-  const footerContactPersons = await footerContactPersonsRes.json();
-
-
-  return { event, events, footerContent, footerContactPersons };
+  return { event, events };
 };
