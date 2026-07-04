@@ -28,8 +28,8 @@ else
 fi
 
 if [ -f "${CADDY_SNIPPET}" ]; then
-  if grep -q 'dev.productdesigntalks.eu' "${CADDY_FILE}" 2>/dev/null; then
-    echo "==> Caddy site dev.productdesigntalks.eu already configured"
+  if grep -q 'dev.productdesigntalks' "${CADDY_FILE}" 2>/dev/null; then
+    echo "==> Caddy site dev.productdesigntalks already configured"
   else
     echo "==> Adding Caddy snippet for dev.productdesigntalks.eu"
     echo "" | sudo tee -a "${CADDY_FILE}" >/dev/null

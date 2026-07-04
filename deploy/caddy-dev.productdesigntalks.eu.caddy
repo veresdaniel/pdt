@@ -4,7 +4,7 @@
 #
 # Then: sudo caddy validate --config /etc/caddy/Caddyfile && sudo systemctl reload caddy
 
-dev.productdesigntalks.eu {
+dev.productdesigntalks.ergomania.eu, dev.productdesigntalks.eu {
 	encode gzip zstd
 
 	reverse_proxy 127.0.0.1:3002 {
@@ -13,7 +13,7 @@ dev.productdesigntalks.eu {
 	}
 
 	log {
-		output file /var/log/caddy/dev.productdesigntalks.eu.access.log {
+		output file /var/log/caddy/dev.productdesigntalks.ergomania.eu.access.log {
 			roll_size 50mb
 			roll_keep 5
 		}
