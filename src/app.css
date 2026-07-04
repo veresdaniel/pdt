@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@source "../node_modules/@ergodot/ui-kit/**/*.{svelte,js,ts}";
 
 /* Poppins @font-face – CDN woff2 (preloaded in app.html) */
 @font-face {

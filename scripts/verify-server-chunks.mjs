@@ -40,13 +40,27 @@ function verifyBundledLayout() {
 		process.exit(1);
 	}
 
-	const hasManifestChunk = chunkFiles.some((file) => file.startsWith('manifest.js-'));
-	if (!hasManifestChunk) {
+	const manifestFile = chunkFiles.find((file) => file.startsWith('manifest.js-'));
+	if (!manifestFile) {
 		console.error('Missing bundled manifest chunk (manifest.js-*.js)');
 		process.exit(1);
 	}
 
-	console.log(`Bundled adapter layout OK — index.js + ${chunkFiles.length} server chunks`);
+	const manifestSource = readFileSync(path.join(chunksDir, manifestFile), 'utf8');
+	const referenced = [
+		...manifestSource.matchAll(/import\s*\(?\s*['"]\.\/([^'"]+)['"]/g)
+	].map((match) => match[1]);
+
+	const missing = referenced.filter((chunk) => !existsSync(path.join(chunksDir, chunk)));
+
+	if (missing.length > 0) {
+		console.error(`Missing ${missing.length} server chunk(s) referenced by ${manifestFile}:`, missing);
+		process.exit(1);
+	}
+
+	console.log(
+		`Bundled adapter layout OK — index.js + ${chunkFiles.length} server chunks (${referenced.length} manifest refs verified)`
+	);
 }
 
 writeFileSync(

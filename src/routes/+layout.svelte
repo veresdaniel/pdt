@@ -1,4 +1,5 @@
 <script lang="ts">
+	import '@ergodot/ui-kit/styles.css';
 	import favicon from "$lib/assets/favicon.svg";
     import { localeStore } from "$lib/stores/locale.store.js";
     import { isValidLocale } from "$lib/types/locale.type.js";
@@ -11,8 +12,6 @@
 	import { PrimaryNavigation, Section } from "@ergodot/ui-kit";
 
 	let { data, children } = $props();
-
-	console.log(data);
 
 	const languages = [
 		{ title: "EN", value: "en" },
