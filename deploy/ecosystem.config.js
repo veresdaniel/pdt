@@ -5,6 +5,7 @@ module.exports = {
 			name: 'pdt-dev',
 			cwd: '/var/www/dev.productdesigntalks.eu',
 			script: '/var/www/dev.productdesigntalks.eu/build/index.js',
+			exec_mode: 'fork',
 			instances: 1,
 			autorestart: true,
 			watch: false,

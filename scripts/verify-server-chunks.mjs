@@ -1,4 +1,4 @@
-import { readFileSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, existsSync, readdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 
 const buildDir = 'build';
@@ -48,6 +48,12 @@ function verifyBundledLayout() {
 
 	console.log(`Bundled adapter layout OK — index.js + ${chunkFiles.length} server chunks`);
 }
+
+writeFileSync(
+	path.join(buildDir, 'package.json'),
+	`${JSON.stringify({ type: 'module' }, null, 2)}\n`
+);
+console.log('Wrote build/package.json (type: module) for Node ESM runtime');
 
 if (existsSync(legacyManifestPath)) {
 	verifyLegacyLayout();
