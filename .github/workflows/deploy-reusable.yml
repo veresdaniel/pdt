@@ -46,60 +46,23 @@ jobs:
         uses: actions/setup-node@v6
         with:
           node-version: '24'
+          registry-url: https://npm.pkg.github.com
+          scope: '@veresdaniel'
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
 
       - name: Install PNPM
         run: npm install -g pnpm@11.7.0
 
-      - name: Configure Git for private GitHub dependency
-        env:
-          GH_PAT: ${{ secrets.GH_PAT }}
-        run: |
-          set -e
-          if [ -z "$GH_PAT" ]; then
-            echo "::error::GH_PAT secret is required to install @ergodot/ui-kit from GitHub. Add it in repo Settings → Secrets → Actions (same PAT as ergodot-fe)."
-            exit 1
-          fi
-          git config --global credential.helper store
-          {
-            echo "https://x-access-token:${GH_PAT}@github.com"
-            echo "https://x-access-token:${GH_PAT}@github.com/veresdaniel/ergodot-ui-kit.git"
-          } > "$HOME/.git-credentials"
-          chmod 600 "$HOME/.git-credentials"
-          git config --global url."https://x-access-token:${GH_PAT}@github.com/".insteadOf "https://github.com/"
-          git config --global url."https://x-access-token:${GH_PAT}@github.com/".insteadOf "git@github.com:"
-          git config --global url."https://x-access-token:${GH_PAT}@github.com/".insteadOf "ssh://git@github.com/"
-
-      - name: Normalize git URLs in pnpm-lock.yaml
-        id: normalize_lock
-        run: |
-          set -e
-          if [ -f pnpm-lock.yaml ]; then
-            before=$(sha256sum pnpm-lock.yaml | cut -d' ' -f1)
-            sed -i \
-              -e 's|git+https://git@github\.com:|git+https://github.com/|g' \
-              -e 's|repo: git@github\.com:|repo: https://github.com/|g' \
-              -e 's|: git@github\.com:|: https://github.com/|g' \
-              pnpm-lock.yaml
-            after=$(sha256sum pnpm-lock.yaml | cut -d' ' -f1)
-            if [ "$before" != "$after" ]; then
-              echo "modified=true" >> "$GITHUB_OUTPUT"
-              echo "::warning::pnpm-lock.yaml contained SSH-style git URLs; normalized for CI. Commit the normalized lockfile from repo root."
-            fi
-          fi
-
-      - name: Sync ui-kit allowBuilds from lockfile
-        run: node scripts/sync-ui-kit-allow-builds.mjs --from-lockfile
-
       - name: Install project dependencies with PNPM
         env:
-          GH_PAT: ${{ secrets.GH_PAT }}
+          NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
         run: |
-          git config --global url."https://x-access-token:${GH_PAT}@github.com/".insteadOf "git@github.com:"
-          if [ "${{ steps.normalize_lock.outputs.modified }}" = "true" ]; then
-            pnpm install --no-frozen-lockfile
-          else
-            pnpm install --frozen-lockfile
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "::error::GH_PAT secret is required (read:packages scope) to install @veresdaniel/ui-kit from GitHub Packages."
+            exit 1
           fi
+          pnpm install --frozen-lockfile
 
       - name: Build with Vite
         env:

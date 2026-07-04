@@ -12,11 +12,11 @@
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "preinstall": "npx only-allow pnpm && (node scripts/sync-ui-kit-allow-builds.mjs --from-lockfile || node scripts/sync-ui-kit-allow-builds.mjs --from-remote)",
-    "update:ui-kit": "node scripts/sync-ui-kit-allow-builds.mjs --from-remote && pnpm update @ergodot/ui-kit && node scripts/sync-ui-kit-allow-builds.mjs --from-lockfile"
+    "preinstall": "npx only-allow pnpm",
+    "update:ui-kit": "pnpm update @ergodot/ui-kit"
   },
   "devDependencies": {
-    "@ergodot/ui-kit": "git+https://github.com/veresdaniel/ergodot-ui-kit.git#main",
+    "@ergodot/ui-kit": "npm:@veresdaniel/ui-kit@^1.12.2",
     "@sveltejs/adapter-auto": "7.0.1",
     "@sveltejs/kit": "2.64.0",
     "@sveltejs/vite-plugin-svelte": "7.1.2",
