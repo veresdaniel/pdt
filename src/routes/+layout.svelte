@@ -113,4 +113,4 @@
 	{@render children?.()}
 </main>
 
-<Footer {footerData} contactPersons={footerContactPersons} />
+<Footer {footerData} contactPersons={footerContactPersons} ergomaniaSiteBase={ergomaniaSiteBase} locale={activeLocale} />

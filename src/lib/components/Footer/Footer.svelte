@@ -112,14 +112,22 @@
 	import FooterSocial from './FooterSocial.svelte';
 	import Logo from '$lib/assets/ergomania-logo.svelte';
 	import type { buildFooterData } from '$lib/functions/common-content.mappers';
+	import { toErgomaniaSiteUrl } from '$lib/functions/ergomaniaSiteUrl';
+	import type { LocaleCode } from '$lib/types/locale.type';
 
 	let {
 		footerData,
-		contactPersons = []
+		contactPersons = [],
+		ergomaniaSiteBase,
+		locale
 	}: {
 		footerData: ReturnType<typeof buildFooterData>;
 		contactPersons?: ContactPerson[];
+		ergomaniaSiteBase: string;
+		locale: LocaleCode;
 	} = $props();
+
+	const ergomaniaHref = (path: string) => toErgomaniaSiteUrl(path, locale, ergomaniaSiteBase);
 
 	function handleContactSubmit(_data: { name: string; email: string; message: string }) {
 		// TODO: submit to API (e.g. same as old contact form)
@@ -146,31 +154,31 @@
 
 		<section class="footer-navigation text-body-sm text-white">
 			<div class="section main-wrapper">
-				<a href="https://ergomania.eu" class="brand-logo text-white">
+				<a href={ergomaniaHref('/')} class="brand-logo text-white">
 					<Logo />
 				</a>
 				<div class="text-white">
 					<div class="title text-body-sm">{$t('COMMON.SERVICES')}</div>
 					<ul class="text-body-sm text-white">
-						<li><a href="/ux-services/#discover" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DISCOVER')}</a></li>
-						<li><a href="/ux-services/#define" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DEFINE')}</a></li>
-						<li><a href="/ux-services/#design" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DESIGN')}</a></li>
-						<li><a href="/ux-services/#develop" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DEVELOP')}</a></li>
-						<li><a href="/ux-services/#education" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.EDUCATION')}</a></li>
-						<li><a href="/ux-services/" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.AI')}</a></li>
+						<li><a href={ergomaniaHref('/ux-services/#discover')} class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DISCOVER')}</a></li>
+						<li><a href={ergomaniaHref('/ux-services/#define')} class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DEFINE')}</a></li>
+						<li><a href={ergomaniaHref('/ux-services/#design')} class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DESIGN')}</a></li>
+						<li><a href={ergomaniaHref('/ux-services/#develop')} class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DEVELOP')}</a></li>
+						<li><a href={ergomaniaHref('/ux-services/#education')} class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.EDUCATION')}</a></li>
+						<li><a href={ergomaniaHref('/ux-services/')} class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.AI')}</a></li>
 					</ul>
 				</div>
 				<div class="text-white">
 					<div class="title text-body-sm">{$t('COMMON.COMPANY')}</div>
 					<ul class="text-body-sm text-white">
-						<li><a href="/ux-team/" class="text-white">{$t('COMMON.TEAM')}</a></li>
-						<li><a href="/imprint/" class="text-white">{$t('COMMON.IMPRINT')}</a></li>
+						<li><a href={ergomaniaHref('/ux-team/')} class="text-white">{$t('COMMON.TEAM')}</a></li>
+						<li><a href={ergomaniaHref('/imprint/')} class="text-white">{$t('COMMON.IMPRINT')}</a></li>
 					</ul>
 				</div>
 				<div class="text-white">
 					<div class="title text-body-sm">{$t('COMMON.LEARN')}</div>
 					<ul class="text-body-sm text-white">
-						<li><a href="/ux-and-product-design-blog/" class="text-white">{$t('COMMON.BLOG')}</a></li>
+						<li><a href={ergomaniaHref('/ux-and-product-design-blog/')} class="text-white">{$t('COMMON.BLOG')}</a></li>
 						<li></li>
 					</ul>
 				</div>
@@ -193,8 +201,8 @@
 				<FooterSocial />
 				<div class="bottom-links text-white">
 					<ul class="text-body-sm text-white">
-						<li><a href="/privacy-policy/" class="break-all text-white">{$t('COMMON.PRIVACY_POLICY')}</a></li>
-						<li><a href="/imprint/" class="text-white">{$t('COMMON.IMPRINT')}</a></li>
+						<li><a href={ergomaniaHref('/privacy-policy/')} class="break-all text-white">{$t('COMMON.PRIVACY_POLICY')}</a></li>
+						<li><a href={ergomaniaHref('/imprint/')} class="text-white">{$t('COMMON.IMPRINT')}</a></li>
 						<li>&copy; {new Date().getFullYear()} {$t('COMMON.COMPANY_NAME')}</li>
 					</ul>
 				</div>

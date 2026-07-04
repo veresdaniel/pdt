@@ -451,3 +451,18 @@ a {
     }
 
 }
+
+/* Desktop: language selector above mega menus (z-60) */
+@media (min-width: 1024px) {
+    header[role="navigation"] > div:first-child > nav {
+        z-index: auto;
+    }
+
+    header[role="navigation"] .primary-navigation__language,
+    header[role="navigation"]
+        > div:first-child
+        > nav
+        > div.hidden.lg\:flex.items-center.relative.shrink-0:not(.primary-navigation__desktop-menu) {
+        z-index: 70;
+    }
+}
