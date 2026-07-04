@@ -88,7 +88,7 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<Section marginTop={false} marginBottom={false} padding="none" class="app-content-wrapper w-full px-10">
+<Section marginTop={false} marginBottom={false} padding="none" class="app-content-wrapper full-width max-lg:px-0! px-10!">
 	<div class="section">
 		<PrimaryNavigation
 			menuItems={data.menuItems}
