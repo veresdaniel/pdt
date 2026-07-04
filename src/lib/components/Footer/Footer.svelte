@@ -9,11 +9,6 @@
 			@apply py-10;
 		}
 
-		:global(.contact-form-block > div) {
-			max-width: none;
-			margin-inline: 0;
-		}
-
 		:global(.contact-form-block h2) {
 			font-size: 1.75rem;
 			line-height: 2rem;
@@ -138,6 +133,7 @@
 	<div class="footer-content app-content-wrapper px-10">
 		<div class="section">
 			<ContactFormBlock
+				contentPaddingX="none"
 				titlePart1={footerData.titlePart1}
 				titlePart2={footerData.titlePart2}
 				{contactPersons}
