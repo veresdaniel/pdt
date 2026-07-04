@@ -16,8 +16,8 @@ importers:
         version: 4.3.0
     devDependencies:
       '@ergodot/ui-kit':
-        specifier: git+https://github.com/veresdaniel/ergodot-ui-kit.git#997a70e5bc11b68fe949afbe35ecf7ca2385ad91
-        version: git+https://github.com/veresdaniel/ergodot-ui-kit.git#997a70e5bc11b68fe949afbe35ecf7ca2385ad91(svelte@5.56.3)
+        specifier: git+https://github.com/veresdaniel/ergodot-ui-kit.git#main
+        version: git+ssh://git@github.com/veresdaniel/ergodot-ui-kit.git#bdf8b01b19b652de883f0136a9e659e7b5e8ee8d(svelte@5.56.3)
       '@sveltejs/adapter-auto':
         specifier: 7.0.1
         version: 7.0.1(@sveltejs/kit@2.64.0(@sveltejs/vite-plugin-svelte@7.1.2(svelte@5.56.3)(vite@8.0.16(jiti@2.7.0)(sass-embedded@1.86.3)))(svelte@5.56.3)(typescript@6.0.3)(vite@8.0.16(jiti@2.7.0)(sass-embedded@1.86.3)))
@@ -79,8 +79,8 @@ packages:
   '@epic-web/invariant@1.0.0':
     resolution: {integrity: sha512-lrTPqgvfFQtR/eY/qkIzp98OGdNJu0m5ji3q/nJI8v3SXkRKEnWiOxMmbvcSoAIzv/cGiuvRy57k4suKQSAdwA==}
 
-  '@ergodot/ui-kit@git+https://github.com/veresdaniel/ergodot-ui-kit.git#997a70e5bc11b68fe949afbe35ecf7ca2385ad91':
-    resolution: {commit: 997a70e5bc11b68fe949afbe35ecf7ca2385ad91, repo: https://github.com/veresdaniel/ergodot-ui-kit.git, type: git}
+  '@ergodot/ui-kit@git+ssh://git@github.com/veresdaniel/ergodot-ui-kit.git#bdf8b01b19b652de883f0136a9e659e7b5e8ee8d':
+    resolution: {commit: bdf8b01b19b652de883f0136a9e659e7b5e8ee8d, repo: git@github.com:veresdaniel/ergodot-ui-kit.git, type: git}
     version: 1.12.0
     peerDependencies:
       svelte: ^5.0.0
@@ -1171,7 +1171,7 @@ snapshots:
 
   '@epic-web/invariant@1.0.0': {}
 
-  '@ergodot/ui-kit@git+https://github.com/veresdaniel/ergodot-ui-kit.git#997a70e5bc11b68fe949afbe35ecf7ca2385ad91(svelte@5.56.3)':
+  '@ergodot/ui-kit@git+ssh://git@github.com/veresdaniel/ergodot-ui-kit.git#bdf8b01b19b652de883f0136a9e659e7b5e8ee8d(svelte@5.56.3)':
     dependencies:
       svelte: 5.56.3
 

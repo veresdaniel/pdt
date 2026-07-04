@@ -87,6 +87,21 @@ jobs:
             fi
           fi
 
+      - name: Sync ui-kit allowBuilds for latest main
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          git config --global url."https://x-access-token:${GH_PAT}@github.com/".insteadOf "git@github.com:"
+          node scripts/sync-ui-kit-allow-builds.mjs --from-remote
+
+      - name: Update ui-kit to latest main
+        env:
+          GH_PAT: ${{ secrets.GH_PAT }}
+        run: |
+          git config --global url."https://x-access-token:${GH_PAT}@github.com/".insteadOf "git@github.com:"
+          pnpm update @ergodot/ui-kit
+          node scripts/sync-ui-kit-allow-builds.mjs --from-lockfile
+
       - name: Install project dependencies with PNPM
         env:
           GH_PAT: ${{ secrets.GH_PAT }}

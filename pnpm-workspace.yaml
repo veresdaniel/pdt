@@ -1,5 +1,6 @@
 allowBuilds:
-  '@ergodot/ui-kit@git+https://github.com/veresdaniel/ergodot-ui-kit.git#997a70e5bc11b68fe949afbe35ecf7ca2385ad91': true
+  '@ergodot/ui-kit@git+ssh://git@github.com/veresdaniel/ergodot-ui-kit.git#bdf8b01b19b652de883f0136a9e659e7b5e8ee8d': true
+  '@ergodot/ui-kit@git+https://github.com/veresdaniel/ergodot-ui-kit.git#bdf8b01b19b652de883f0136a9e659e7b5e8ee8d': true
   esbuild: true
 minimumReleaseAgeExclude:
   - '@sveltejs/kit@2.64.0'
