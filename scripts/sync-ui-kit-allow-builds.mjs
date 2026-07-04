@@ -42,10 +42,19 @@ function hashFromLockfile() {
 }
 
 /** @returns {string} */
+function gitRemoteUrl() {
+	const token = process.env.GH_PAT?.trim();
+	if (token) {
+		return `https://x-access-token:${token}@github.com/${repo}.git`;
+	}
+	return `https://github.com/${repo}.git`;
+}
+
+/** @returns {string} */
 function hashFromRemote() {
-	const url = `https://github.com/${repo}.git`;
-	const out = execFileSync('git', ['ls-remote', url, `refs/heads/${branch}`], {
+	const out = execFileSync('git', ['ls-remote', gitRemoteUrl(), `refs/heads/${branch}`], {
 		encoding: 'utf8',
+		stdio: ['ignore', 'pipe', 'pipe'],
 	});
 	const hash = out.trim().split(/\s+/)[0];
 	if (!/^[0-9a-f]{40}$/i.test(hash)) {
