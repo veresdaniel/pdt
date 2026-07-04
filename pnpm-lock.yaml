@@ -16,8 +16,8 @@ importers:
         version: 4.3.0
     devDependencies:
       '@ergodot/ui-kit':
-        specifier: npm:@veresdaniel/ui-kit@^1.13.1
-        version: '@veresdaniel/ui-kit@1.13.1(svelte@5.56.3)'
+        specifier: npm:@veresdaniel/ui-kit@^1.14.0
+        version: '@veresdaniel/ui-kit@1.14.0(svelte@5.56.3)'
       '@sveltejs/adapter-auto':
         specifier: 7.0.1
         version: 7.0.1(@sveltejs/kit@2.64.0(@sveltejs/vite-plugin-svelte@7.1.2(svelte@5.56.3)(vite@8.0.16(jiti@2.7.0)(sass-embedded@1.86.3)))(svelte@5.56.3)(typescript@6.0.3)(vite@8.0.16(jiti@2.7.0)(sass-embedded@1.86.3)))
@@ -540,8 +540,8 @@ packages:
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
 
-  '@veresdaniel/ui-kit@1.13.1':
-    resolution: {integrity: sha512-lpsm/W6Cz0WJUuYFyt1sORSm0WSu/YceaFrsYpae5q+w1iaSNGp8PzeRRTLIV7qHrj8r2J0AAtGRDygiA4P7bA==, tarball: https://npm.pkg.github.com/download/@veresdaniel/ui-kit/1.13.1/45e7a25d55e51a6e0e40ccec9da84c7de1253db9}
+  '@veresdaniel/ui-kit@1.14.0':
+    resolution: {integrity: sha512-iKSgDGeoJG6aj+fibCxhWMC2Ga3Q/8srMmzy6RZfLyBJhwFhzH6a9hsyScbJOGotcZrPz0aC8qqLJeroCIczsg==, tarball: https://npm.pkg.github.com/download/@veresdaniel/ui-kit/1.14.0/789a7775be8fc16ca98a9bd01792e5392ab02174}
     peerDependencies:
       svelte: ^5.0.0
 
@@ -1501,7 +1501,7 @@ snapshots:
 
   '@types/trusted-types@2.0.7': {}
 
-  '@veresdaniel/ui-kit@1.13.1(svelte@5.56.3)':
+  '@veresdaniel/ui-kit@1.14.0(svelte@5.56.3)':
     dependencies:
       svelte: 5.56.3
 

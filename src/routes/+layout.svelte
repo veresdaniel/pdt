@@ -105,6 +105,8 @@
 			{languages}
 			{eventMegaMenuLabels}
 			sticky={true}
+			fullWidthSticky={true}
+			layoutBoundary={{ maxWidth: '1770px', paddingInline: '2.5rem' }}
 		/>
 	</div>
 </Section>
