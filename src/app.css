@@ -1,4 +1,8 @@
-@import "tailwindcss";
+@import "tailwindcss/preflight";
+@import "tailwindcss/theme";
+@import "tailwindcss/utilities";
+
+@source "../src/**/*.{html,js,ts,svelte}";
 @source "../node_modules/@ergodot/ui-kit/**/*.{svelte,js,ts}";
 
 /* Poppins @font-face – CDN woff2 (preloaded in app.html) */

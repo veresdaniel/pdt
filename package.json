@@ -15,12 +15,11 @@
     "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
-    "@ergodot/ui-kit": "git+https://github.com/veresdaniel/ergodot-ui-kit.git",
+    "@ergodot/ui-kit": "git+https://github.com/veresdaniel/ergodot-ui-kit.git#997a70e5bc11b68fe949afbe35ecf7ca2385ad91",
     "@sveltejs/adapter-auto": "7.0.1",
     "@sveltejs/kit": "2.64.0",
     "@sveltejs/vite-plugin-svelte": "7.1.2",
     "@tailwindcss/postcss": "4.2.2",
-    "@tailwindcss/vite": "4.3.0",
     "autoprefixer": "10.4.27",
     "cross-env": "10.1.0",
     "postcss": "8.5.8",

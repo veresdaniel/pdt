@@ -44,7 +44,7 @@
 				}
 
 				& > div {
-					@apply basis-[49%] sm:basis-1;
+					@apply basis-[49%] sm:basis-0 sm:flex-1;
 				}
 
 				.offices-wrapper {
