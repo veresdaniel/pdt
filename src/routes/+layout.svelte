@@ -11,6 +11,8 @@
 	import '../lib/styles/events.css';
 	import '../lib/styles/registration.css';
 	import { PrimaryNavigation, Section } from '@ergodot/ui-kit';
+	import { PUBLIC_ERGOMANIA_SITE_URL } from '$env/static/public';
+	import ErgomaniaLogo from '$lib/assets/ergomania-bk.svg';
 	import { translations, type Locale } from '$lib/i18n/i18n.js';
 	import { createFormatMissing } from '$lib/functions/formatMissingTranslation';
 	import { buildFooterData, buildFooterContactPersons } from '$lib/functions/common-content.mappers';
@@ -64,6 +66,12 @@
 		};
 	});
 
+	const ergomaniaSiteBase = PUBLIC_ERGOMANIA_SITE_URL.replace(/\/$/, '');
+	const logo = $derived.by(() => ({
+		url: `${ergomaniaSiteBase}/${activeLocale}/`,
+		imageUrl: ErgomaniaLogo
+	}));
+
 	function onLanguageChange(item: { title: string; value?: string }) {
 		const code = item.value ?? item.title.toLowerCase();
 		if (!isValidLocale(code)) return;
@@ -92,6 +100,7 @@
 	<div class="section">
 		<PrimaryNavigation
 			menuItems={data.menuItems}
+			{logo}
 			{onLanguageChange}
 			{languages}
 			{eventMegaMenuLabels}
