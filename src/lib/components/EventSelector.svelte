@@ -14,7 +14,7 @@
 
     function selectEvent(slug: string) {
         isOpen = false;
-        goto(`/${get(locale)}/events/${slug}`);
+        goto(`/${get(locale)}/events/${slug}/`);
     }
 
     function toggleDropdown() {

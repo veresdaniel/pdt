@@ -22,7 +22,7 @@
 		const code = item.value ?? item.title.toLowerCase();
 		if (!isValidLocale(code)) return;
 		localeStore.set(code);
-		location.href = `/${code}`;
+		location.href = `/${code}/`;
 	}
 </script>
 

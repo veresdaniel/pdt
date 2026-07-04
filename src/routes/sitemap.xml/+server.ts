@@ -33,7 +33,7 @@ export const GET: RequestHandler = async ({ fetch, url }) => {
             //TODO get real date
             urls.push(`
                 <url>
-                    <loc>${url.origin}/${locale}/events/${escapeXml(event.slug)}</loc>
+                    <loc>${url.origin}/${locale}/events/${escapeXml(event.slug)}/</loc>
                     <lastmod>${new Date().toISOString()}</lastmod>
                     <changefreq>daily</changefreq>
                     <priority>0.9</priority>

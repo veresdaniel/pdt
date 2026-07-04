@@ -10,7 +10,7 @@
     }
     
     async function switchLocale(newLocale: Locale) {
-        await goto(`/${newLocale}`);
+        await goto(`/${newLocale}/`);
     }
 
 </script>

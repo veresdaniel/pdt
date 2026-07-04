@@ -99,7 +99,7 @@
         <h2>Upcoming events</h2>
         <div class="events">
             {#each data.futureEvents.slice(0, 2) as event}
-                <a href={`events/${event.slug}`}>
+                <a href={`events/${event.slug}/`}>
                     <div class="event">
                         <div style="min-height: 302px;">
                             <span class="location">{event.location}</span>
@@ -122,7 +122,7 @@
         <h2>Past events</h2>
         <div class="events">
             {#each data.pastEvents.slice(0, 3) as event}
-                <a href={`events/${event.slug}`}>
+                <a href={`events/${event.slug}/`}>
                     <div class="event">
                         <div style="min-height: 302px;">
                             <span class="location">{event.location}</span>

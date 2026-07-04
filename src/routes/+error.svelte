@@ -7,7 +7,7 @@
 
     function goHome() {
         const locale = page.params.lang ?? 'hu';
-        goto(`/${locale}`);
+        goto(`/${locale}/events/`);
     }
 </script>
 

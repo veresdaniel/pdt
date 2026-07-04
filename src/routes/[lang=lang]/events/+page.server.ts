@@ -9,7 +9,7 @@ export const load: PageServerLoad = async ({ params, fetch, locals }) => {
   const upcomingEvent = await eventService.getUpcomingEvent(fetch, lang);
   
   locals.upcomingEvent = upcomingEvent;
-  throw redirect(302, `/${lang}/events/${upcomingEvent.slug}`);
+  throw redirect(302, `/${lang}/events/${upcomingEvent.slug}/`);
 };*/
 
 import type { PageServerLoad } from './$types';

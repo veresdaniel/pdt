@@ -127,21 +127,21 @@
 					<li><a href="/ux-services/#design" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DESIGN')}</a></li>
 					<li><a href="/ux-services/#develop" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.DEVELOP')}</a></li>
 					<li><a href="/ux-services/#education" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.EDUCATION')}</a></li>
-					<li><a href="/ux-services" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.AI')}</a></li>
+					<li><a href="/ux-services/" class="text-white">{$t('UX_SERVICES.SERVICE_CATEGORIES.AI')}</a></li>
 				</ul>
 			</div>
 			<div class="text-white">
 				<div class="title text-body-sm">{$t('COMMON.COMPANY')}</div>
 				<ul class="text-body-sm text-white">
-					<li><a href="/ux-team" class="text-white">{$t('COMMON.TEAM')}</a></li>
+					<li><a href="/ux-team/" class="text-white">{$t('COMMON.TEAM')}</a></li>
 					<!-- <li class="whitespace-nowrap">{$t('FOOTER.FINTECH_BOOK')}</li> -->
-					<li><a href="/imprint" class="text-white">{$t('COMMON.IMPRINT')}</a></li>
+					<li><a href="/imprint/" class="text-white">{$t('COMMON.IMPRINT')}</a></li>
 				</ul>
 			</div>
 			<div class="text-white">
 				<div class="title text-body-sm">{$t('COMMON.LEARN')}</div>
 				<ul class="text-body-sm text-white">
-					<li><a href="/ux-and-product-design-blog" class="text-white">{$t('COMMON.BLOG')}</a></li>
+					<li><a href="/ux-and-product-design-blog/" class="text-white">{$t('COMMON.BLOG')}</a></li>
 					<!-- <li>{$t('COMMON.EVENTS')}</li> -->
 					<li></li>
 				</ul>
@@ -165,8 +165,8 @@
 			<FooterSocial />
 			<div class="bottom-links text-white">
 				<ul class="text-body-sm text-white">
-					<li><a href="/privacy-policy" class="break-all text-white">{$t('COMMON.PRIVACY_POLICY')}</a></li>
-					<li><a href="/imprint" class="text-white">{$t('COMMON.IMPRINT')}</a></li>
+					<li><a href="/privacy-policy/" class="break-all text-white">{$t('COMMON.PRIVACY_POLICY')}</a></li>
+					<li><a href="/imprint/" class="text-white">{$t('COMMON.IMPRINT')}</a></li>
 					<li>&copy; {new Date().getFullYear()} {$t('COMMON.COMPANY_NAME')}</li>
 				</ul>
 			</div>

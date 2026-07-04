@@ -3,7 +3,7 @@ export const eventsMenu: Object = {
     footerIndex: 0,
     headerChildren: [],
     //headerIndex: 0,
-    path: "/events",
+    path: "/events/",
     showInFooter: false,
     showInHeader: true,
     text: "Events",
