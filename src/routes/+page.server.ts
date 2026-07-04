@@ -4,7 +4,7 @@ import { EventService } from '$lib/services/event-service';
 import type { Locale } from '$lib/i18n/i18n';
 
 const eventService = new EventService();
-export const load: PageServerLoad = async ({ fetch, locals, url, request }) => {
+export const load: PageServerLoad = async ({ fetch, locals, request }) => {
 
   const acceptLanguage: string = request.headers.get('accept-language') ?? '';
 
@@ -18,7 +18,6 @@ export const load: PageServerLoad = async ({ fetch, locals, url, request }) => {
 
   const upcomingEvent = await eventService.getUpcomingEvent(fetch, lang);
 
-  const origin = url.origin;
   locals.upcomingEvent = upcomingEvent;
-  throw redirect(302, `${origin}/${lang}/events/${upcomingEvent.slug}`);
+  throw redirect(302, `/${lang}/events/${upcomingEvent.slug}`);
 };
