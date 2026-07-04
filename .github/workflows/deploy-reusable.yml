@@ -28,6 +28,9 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: read
 
     steps:
       - name: Checkout code
@@ -49,20 +52,15 @@ jobs:
           registry-url: https://npm.pkg.github.com
           scope: '@veresdaniel'
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install PNPM
         run: npm install -g pnpm@11.7.0
 
       - name: Install project dependencies with PNPM
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.GH_PAT }}
-        run: |
-          if [ -z "$NODE_AUTH_TOKEN" ]; then
-            echo "::error::GH_PAT secret is required (read:packages scope) to install @veresdaniel/ui-kit from GitHub Packages."
-            exit 1
-          fi
-          pnpm install --frozen-lockfile
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm install --frozen-lockfile
 
       - name: Build with Vite
         env:
