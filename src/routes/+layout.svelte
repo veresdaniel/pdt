@@ -12,6 +12,7 @@
 	import "../lib/styles/events.css";
 	import "../lib/styles/registration.css";
 	import { PrimaryNavigation, Section } from "@ergodot/ui-kit";
+	import { translations, type Locale } from "$lib/i18n/i18n.js";
 
 	let { data, children } = $props();
 
@@ -46,6 +47,14 @@
 		return [active, ...LOCALE_OPTIONS.filter((item) => item.value !== activeLocale)];
 	});
 
+	const eventMegaMenuLabels = $derived.by(() => {
+		const locale = (activeLocale === 'hu' ? 'hu' : 'en') as Locale;
+		return {
+			upcoming: translations[locale].nav.eventMenuUpcoming,
+			past: translations[locale].nav.eventMenuPast
+		};
+	});
+
 	function onLanguageChange(item: { title: string; value?: string }) {
 		const code = item.value ?? item.title.toLowerCase();
 		if (!isValidLocale(code)) return;
@@ -73,8 +82,16 @@
 	marginTop={false}
 	marginBottom={false}
 	padding="none"
-	class="app-content-wrapper w-full"
+	class="app-content-wrapper w-full px-10"
 >
-	<PrimaryNavigation menuItems={data.menuItems} {onLanguageChange} {languages} sticky={true} />
+	<div class="section">
+		<PrimaryNavigation
+			menuItems={data.menuItems}
+			{onLanguageChange}
+			{languages}
+			{eventMegaMenuLabels}
+			sticky={true}
+		/>
+	</div>
 </Section>
 {@render children()}

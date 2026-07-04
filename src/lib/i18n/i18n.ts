@@ -11,7 +11,9 @@ export const translations = {
             productDesignTalks: 'Product Design Talks',
             program: 'Program',
             contact: 'Kapcsolat',
-            register: 'REGISZTRÁLOK'
+            register: 'REGISZTRÁLOK',
+            eventMenuUpcoming: 'Közelgő események',
+            eventMenuPast: 'Korábbi események'
         },
         event: {
             program: "Programme",
@@ -118,7 +120,9 @@ export const translations = {
             productDesignTalks: 'Product Design Talks',
             program: 'Programme',
             contact: 'Contact',
-            register: 'REGISTER'
+            register: 'REGISTER',
+            eventMenuUpcoming: 'Upcoming events',
+            eventMenuPast: 'Past events'
         },
         event: {
             program: "Programme",

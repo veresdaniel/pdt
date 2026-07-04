@@ -5,4 +5,4 @@ minimumReleaseAgeExclude:
   - '@sveltejs/kit@2.64.0'
   - vite@8.0.16
   - electron-to-chromium@1.5.387
-  - '@veresdaniel/ui-kit@1.12.2'
+  - '@veresdaniel/ui-kit'

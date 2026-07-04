@@ -204,7 +204,29 @@ a {
 .main-content {
     max-width: 1760px;
     margin: 0 auto;
-} 
+}
+
+.app-content-wrapper {
+    width: 100%;
+    max-width: 2560px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+.section {
+    max-width: 1770px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (width <= 120rem) {
+    .section:not(.full-width) {
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+}
 
 /* Section Content */
 .section-content {

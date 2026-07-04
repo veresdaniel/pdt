@@ -5,8 +5,17 @@
 		@apply text-white p-0;
 		background-color: var(--color-neutral-ultradark) !important;
 
+		.footer-content {
+			@apply py-10;
+		}
+
+		:global(.contact-form-block > div) {
+			max-width: none;
+			margin-inline: 0;
+		}
+
 		.footer-navigation {
-			@apply pt-12 px-5 sm:px-12;
+			@apply pt-12;
 			background-color: var(--color-neutral-ultradark) !important;
 			color: #fff;
 
@@ -97,25 +106,29 @@
 	}
 </script>
 
-<footer class="px-12 py-10 items-center">
-	<ContactFormBlock
-		titlePart1={content?.titlePart1}
-		titlePart2={content?.titlePart2}
-		contactPersons={contactPersons}
-		phone={content?.phone}
-		email={content?.email}
-		namePlaceholder={content?.namePlaceholder}
-		emailPlaceholder={content?.emailPlaceholder}
-		messagePlaceholder={content?.messagePlaceholder}
-		privacyLabelBefore={content?.privacyLabelBefore}
-		privacyLinkText={content?.privacyLinkText}
-		privacyLinkUrl={content?.privacyLinkUrl}
-		privacyLabelAfter={content?.privacyLabelAfter}
-		submitButtonLabel={content?.submitButtonLabel}
-		onSubmit={handleContactSubmit}
-	/>
-	<section class="footer-navigation text-body-sm text-white">
-		<div class="main-wrapper app-content-wrapper">
+<footer>
+	<div class="footer-content app-content-wrapper px-10">
+		<div class="section">
+			<ContactFormBlock
+				titlePart1={content?.titlePart1}
+				titlePart2={content?.titlePart2}
+				contactPersons={contactPersons}
+				phone={content?.phone}
+				email={content?.email}
+				namePlaceholder={content?.namePlaceholder}
+				emailPlaceholder={content?.emailPlaceholder}
+				messagePlaceholder={content?.messagePlaceholder}
+				privacyLabelBefore={content?.privacyLabelBefore}
+				privacyLinkText={content?.privacyLinkText}
+				privacyLinkUrl={content?.privacyLinkUrl}
+				privacyLabelAfter={content?.privacyLabelAfter}
+				submitButtonLabel={content?.submitButtonLabel}
+				onSubmit={handleContactSubmit}
+			/>
+		</div>
+
+		<section class="footer-navigation text-body-sm text-white">
+			<div class="section main-wrapper">
 			<a href="https://ergomania.eu" class="brand-logo text-white">
 				<Logo />
 			</a>
@@ -134,7 +147,6 @@
 				<div class="title text-body-sm">{$t('COMMON.COMPANY')}</div>
 				<ul class="text-body-sm text-white">
 					<li><a href="/ux-team/" class="text-white">{$t('COMMON.TEAM')}</a></li>
-					<!-- <li class="whitespace-nowrap">{$t('FOOTER.FINTECH_BOOK')}</li> -->
 					<li><a href="/imprint/" class="text-white">{$t('COMMON.IMPRINT')}</a></li>
 				</ul>
 			</div>
@@ -142,7 +154,6 @@
 				<div class="title text-body-sm">{$t('COMMON.LEARN')}</div>
 				<ul class="text-body-sm text-white">
 					<li><a href="/ux-and-product-design-blog/" class="text-white">{$t('COMMON.BLOG')}</a></li>
-					<!-- <li>{$t('COMMON.EVENTS')}</li> -->
 					<li></li>
 				</ul>
 			</div>
@@ -160,8 +171,8 @@
 				</div>
 			</div>
 		</div>
-		<div class="sep"></div>
-		<section class="bottom-links-wrapper">
+		<div class="section sep"></div>
+		<section class="section bottom-links-wrapper">
 			<FooterSocial />
 			<div class="bottom-links text-white">
 				<ul class="text-body-sm text-white">
@@ -172,4 +183,5 @@
 			</div>
 		</section>
 	</section>
+	</div>
 </footer>

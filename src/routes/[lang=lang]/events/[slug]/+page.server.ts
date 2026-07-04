@@ -2,8 +2,6 @@ import type { PageServerLoad } from './$types';
 import { API_BASE_URL } from '$env/static/private';
 import type { EventInfo } from '$lib/models/event-info.model';
 import { error } from '@sveltejs/kit';
-import { uxServicesCategories } from '$lib/mockData/services-menu.mock';
-import { eventsMenu } from '$lib/mockData/events-menu.mock';
 
 export const load: PageServerLoad = async ({ params, locals, fetch }) => {
   const lang = params.lang;

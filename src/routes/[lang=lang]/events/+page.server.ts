@@ -16,8 +16,6 @@ import type { PageServerLoad } from './$types';
 import { API_BASE_URL } from '$env/static/private';
 import type { EventInfo } from '$lib/models/event-info.model';
 import { error } from '@sveltejs/kit';
-import { uxServicesCategories } from '$lib/mockData/services-menu.mock';
-import { eventsMenu } from '$lib/mockData/events-menu.mock';
 import type { IEvent } from '$lib/interfaces/eventInterface';
 
 export const load: PageServerLoad = async ({ params, locals, fetch }) => {
