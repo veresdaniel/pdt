@@ -154,7 +154,9 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             set -e
-            pm2 delete ${{ inputs.pm2_app }} 2>/dev/null || true
+            DEPLOY_PATH="${{ inputs.deploy_path }}"
+            PM2_APP="${{ inputs.pm2_app }}"
+            pm2 delete "$PM2_APP" 2>/dev/null || true
             pm2 start "$DEPLOY_PATH/deploy/ecosystem.config.js"
             pm2 save
             sleep 5
