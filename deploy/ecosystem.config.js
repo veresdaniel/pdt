@@ -18,7 +18,6 @@ module.exports = {
 				PORT: 3002,
 				HOST: '127.0.0.1',
 				NODE_ENV: 'production',
-				ORIGIN: 'https://dev.productdesigntalks.ergomania.eu',
 				PROTOCOL_HEADER: 'x-forwarded-proto',
 				HOST_HEADER: 'x-forwarded-host'
 			}

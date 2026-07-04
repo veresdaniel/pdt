@@ -154,7 +154,8 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             set -e
-            pm2 restart ${{ inputs.pm2_app }}
+            pm2 startOrReload "$DEPLOY_PATH/deploy/ecosystem.config.js" --update-env
+            pm2 save
             sleep 5
             for i in 1 2 3 4 5; do
               status=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:${{ inputs.health_port }}${{ inputs.health_path }}" || true)
