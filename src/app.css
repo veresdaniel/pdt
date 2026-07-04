@@ -158,6 +158,10 @@
     --font-size-body: 1.125rem;
     --font-size-display-lg: 5.5rem;
     --font-size-display-line-lg: 5.625rem;
+
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
 }
 
 :root {
@@ -187,6 +191,21 @@ body {
     color: #333;
     background: #FFF;
     background: linear-gradient(0deg, rgba(255, 255, 255, 1) 90%, rgba(231, 232, 242, 1) 100%);
+}
+
+/* Heading scale — matches ergodot-fe styles.scss / ui-kit ContactFormBlock title */
+h2 {
+    font-size: 1.75rem;
+    line-height: 2rem;
+    letter-spacing: 0;
+    font-weight: 500;
+}
+
+@media (min-width: 1024px) {
+    h2 {
+        font-size: 3rem;
+        line-height: 3.25rem;
+    }
 }
 
 img {

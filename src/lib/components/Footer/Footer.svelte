@@ -14,6 +14,20 @@
 			margin-inline: 0;
 		}
 
+		:global(.contact-form-block h2) {
+			font-size: 1.75rem;
+			line-height: 2rem;
+			letter-spacing: 0;
+			font-weight: 500;
+		}
+
+		@media (min-width: 1024px) {
+			:global(.contact-form-block h2) {
+				font-size: 3rem;
+				line-height: 3.25rem;
+			}
+		}
+
 		.footer-navigation {
 			@apply pt-12;
 			background-color: var(--color-neutral-ultradark) !important;
