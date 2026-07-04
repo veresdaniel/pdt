@@ -6,29 +6,33 @@
   "scripts": {
     "dev": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 vite dev",
     "build": "vite build",
+    "buildStaging": "vite build --mode staging",
+    "buildProd": "vite build",
     "preview": "vite preview",
     "prepare": "svelte-kit sync || echo ''",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch"
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "preinstall": "npx only-allow pnpm"
   },
   "devDependencies": {
     "@ergodot/ui-kit": "git+https://github.com/veresdaniel/ergodot-ui-kit.git",
     "@sveltejs/adapter-auto": "7.0.1",
     "@sveltejs/kit": "2.64.0",
     "@sveltejs/vite-plugin-svelte": "7.1.2",
+    "@tailwindcss/postcss": "4.2.2",
+    "@tailwindcss/vite": "4.3.0",
+    "autoprefixer": "10.4.27",
     "cross-env": "10.1.0",
+    "postcss": "8.5.8",
+    "postcss-load-config": "6.0.1",
+    "sass-embedded": "1.86.3",
     "svelte": "5.56.3",
     "svelte-check": "4.6.0",
     "typescript": "6.0.3",
-    "vite": "8.0.16",
-    "@tailwindcss/postcss": "4.2.2",
-    "postcss": "8.5.8",
-    "postcss-load-config": "6.0.1",
-    "autoprefixer": "10.4.27"
+    "vite": "8.0.16"
   },
   "dependencies": {
-    "@sveltejs/adapter-vercel": "6.3.3",
-    "@tailwindcss/vite": "4.3.0",
+    "@sveltejs/adapter-node": "5.5.7",
     "tailwindcss": "4.3.0"
   }
 }

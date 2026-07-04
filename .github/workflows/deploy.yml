@@ -1,0 +1,17 @@
+name: DEV Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy-reusable.yml
+    secrets: inherit
+    with:
+      build_script: buildStaging
+      deploy_path: /var/www/dev.productdesigntalks.eu
+      pm2_app: pdt-dev
+      health_port: '3002'
+      health_path: /en/events/

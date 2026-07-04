@@ -1,0 +1,22 @@
+# Append to /etc/caddy/Caddyfile (or import from conf.d):
+#
+#   import /var/www/dev.productdesigntalks.eu/deploy/caddy-dev.productdesigntalks.eu.caddy
+#
+# Then: sudo caddy validate --config /etc/caddy/Caddyfile && sudo systemctl reload caddy
+
+dev.productdesigntalks.eu {
+	encode gzip zstd
+
+	reverse_proxy 127.0.0.1:3002 {
+		header_up X-Forwarded-Proto {scheme}
+		header_up X-Forwarded-Host {host}
+	}
+
+	log {
+		output file /var/log/caddy/dev.productdesigntalks.eu.access.log {
+			roll_size 50mb
+			roll_keep 5
+		}
+		format json
+	}
+}
