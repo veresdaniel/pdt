@@ -4,9 +4,13 @@
     import Button from "$lib/components/Button.svelte";
     import { page } from "$app/state";
     import { locale, t } from "$lib/i18n/i18n";
+    import { goto } from "$app/navigation";
+    import { eventsMenu } from "$lib/mockData/events-menu.mock.js";
 
     let { data } = $props();
     let isPDT = $state(true);
+
+    console.log(data);
 
     function formatDate(date) {
         if (!date) return "";
@@ -45,7 +49,6 @@
     padding="none"
     class="app-content-wrapper w-full"
 >
-
     <div class="greating">
         <h2>Events where you can meet us</h2>
         <p>
@@ -66,30 +69,27 @@
     <section class="hero next-event">
         <div class="hero-content">
             <div class="hero-meta">
-                <p>2026 február 25., Csütörtök, 9:00</p>
-                <p>Ergománia Iroda, 1114 Budapest, Bartók Béla út 39.</p>
+                <p>{formatDateTime(data.upcomingEvent.dateTime)}</p>
+                <p>{data.upcomingEvent.location}</p>
             </div>
-            <h1>Nem az AI képességein múlik a siker, hanem a döntéseken</h1>
+            <h1>{data.upcomingEvent.title}</h1>
             <p class="hero-short">
-                Üzleti reggelink célja, hogy a magyar kereskedelmi, banki és
-                e-commerce szektor szakértőit és döntéshozóit egy asztalhoz
-                ültessük,
+                {data.upcomingEvent.subtitle}
             </p>
             <div>
                 <Button label="Regisztálok" variant="highlighted" />
-                <Button label="Részletek" variant="secondary" />
+                <Button
+                    label="Részletek"
+                    variant="secondary"
+                    onclick={() => goto(data.upcomingEvent.slug)}
+                />
             </div>
         </div>
         <div class="hero-image">
             <img
-                src="//eregocdn-b22b.kxcdn.com/ergomania-talks/desktop/bg@3x.png"
+                src={data.upcomingEvent.featuredImageUrl}
                 alt="Talks"
                 class="desktop-image"
-            />
-            <img
-                src="//eregocdn-b22b.kxcdn.com/ergomania-talks/mobile/bg@3x-mobile.png"
-                alt="Talks"
-                class="mobile-image"
             />
         </div>
     </section>
@@ -109,11 +109,13 @@
                         <div class="event-info">
                             <p class="date">{formatDate(event.dateTime)}</p>
                             <p class="title">{event.title}</p>
-                            <p class="desc">{event.description}</p>
+                            <p class="desc">{@html event.description}</p>
                         </div>
                     </div>
                 </a>
-            {:else}{/each}
+            {:else}
+                <h3>{$t("events.noEvents")}</h3>
+            {/each}
         </div>
     </section>
 
@@ -136,7 +138,9 @@
                         </div>
                     </div>
                 </a>
-            {:else}{/each}
+            {:else}
+                <h3>{$t("events.noEvents")}</h3>
+            {/each}
         </div>
     </section>
 

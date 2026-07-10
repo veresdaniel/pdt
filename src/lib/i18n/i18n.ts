@@ -18,7 +18,9 @@ export const translations = {
         event: {
             program: "Programme",
         },
-
+        events: {
+            noEvents: 'Nincsenek megjeleníthető események.'
+        },
         registration: {
             title: 'Regisztrálj',
             subtitle: 'Gyorsan töltődnek a helyek. Regisztrálj most!',
@@ -57,63 +59,6 @@ export const translations = {
                 general: 'Hiba történt. Kérjük, próbálja újra.'
             }
         },
-        footer: {
-            copyright: '©2026 Ergománia',
-            sections: {
-                ergomania: {
-                    title: 'Ergománia',
-                    links: {
-                        ourWork: 'Munkáink',
-                        aboutUs: 'Rólunk',
-                        services: 'Szolgáltatások'
-                    }
-                },
-                followUs: {
-                    title: 'Kövess minket',
-                    links: {
-                        facebook: 'Facebook',
-                        twitter: 'Twitter',
-                        linkedin: 'LinkedIn',
-                        instagram: 'Instagram',
-                        medium: 'Medium',
-                        googlePlus: 'Google+'
-                    }
-                },
-                contact: {
-                    title: 'Kapcsolat'
-                }
-            }
-        },
-
-        "COMMON": {
-            "PRIVACY_POLICY": "Adatvédelmi irányelvek",
-            "COMPANY_NAME": "Ergomania kft.",
-            "IMPRINT": "Impresszum",
-            "SERVICES": "Szolgáltatások",
-            "COMPANY": "Rólunk",
-            "LEARN": "Tudástár",
-            "OFFICES": "Irodák",
-            "BLOG": "Blog",
-            "TEAM": "Csapat",
-        },
-        "UX_SERVICES": {
-            "TITLE": "UX Szolgáltatások",
-            "DESCRIPTION": "Az UX-hez való megközelítésünk túlmutat a vizuális tervezésen. Teljes körű felelősséget vállalunk, kezdve a kezdeti az érdekeltek interjújával, folytatva minden szakaszon keresztül, és végül egy csiszolt digitális termék. ",
-            "SERVICE_CATEGORIES": {
-                "DEFINE": "Meghatároz",
-                "DESIGN": "Tervezés",
-                "DEVELOP": "Fejlesztés",
-                "DISCOVER": "Felfedezés",
-                "EDUCATION": "Oktatás",
-                "AI": "AI"
-            }
-        },
-        "OFFICE_ADDRESS": {
-            "BUDAPEST": "Budapest",
-            "BUDAPEST_ADDRESS": "1114 Bartók Béla u. 39.",
-            "AMSTERDAM": "Amszterdam",
-            "AMSTERDAM_ADDRESS": "Herengracht 124-128, 1015 BT <br /> Amszterdam, Hollandia"
-        },
     },
     en: {
         nav: {
@@ -126,6 +71,9 @@ export const translations = {
         },
         event: {
             program: "Programme",
+        },
+        events: {
+            noEvents: 'There is no available events.'
         },
         registration: {
             title: 'Register',
@@ -163,61 +111,6 @@ export const translations = {
                 phone: 'Please enter a valid phone number',
                 city: 'Please choose a city',
                 general: 'An error occurred. Please try again.'
-            }
-        },
-        footer: {
-            copyright: '©2026 Ergománia',
-            sections: {
-                ergomania: {
-                    title: 'Ergománia',
-                    links: {
-                        ourWork: 'Our work',
-                        aboutUs: 'About Us',
-                        services: 'Services'
-                    }
-                },
-                followUs: {
-                    title: 'Follow Us',
-                    links: {
-                        facebook: 'Facebook',
-                        twitter: 'Twitter',
-                        linkedin: 'LinkedIn',
-                        instagram: 'Instagram',
-                        medium: 'Medium',
-                        googlePlus: 'Google+'
-                    }
-                },
-                contact: {
-                    title: 'Contact'
-                }
-            }
-        },
-        "COMMON": {
-            "BLOG": "Blog",
-            "COMPANY_NAME": "Ergomania kft.",
-            "COMPANY": "Company",
-            "IMPRINT": "Imprint",
-            "LEARN": "Learn",
-            "OFFICES": "Offices",
-            "PRIVACY_POLICY": "Privacy Policy",
-            "SERVICES": "Services",
-            "TEAM": "Team",
-        },
-        "OFFICE_ADDRESS": {
-            "BUDAPEST": "Budapest",
-            "BUDAPEST_ADDRESS": "1114 Bartók Béla street 39.",
-            "AMSTERDAM": "Amsterdam",
-            "AMSTERDAM_ADDRESS": "Herengracht 124-128, 1015 BT <br /> Amsterdam, Netherlands"
-        }, "UX_SERVICES": {
-            "TITLE": "UX Services",
-            "DESCRIPTION": "Our approach to UX extends beyond designing visuals. We embrace end-to-end responsibility, starting from the initial stakeholder interview and continuing through every stage, culminating in a polished digital product.",
-            "SERVICE_CATEGORIES": {
-                "DEFINE": "Define",
-                "DESIGN": "Design",
-                "DEVELOP": "Develop",
-                "DISCOVER": "Discover",
-                "EDUCATION": "Education",
-                "AI": "AI"
             }
         },
     }
