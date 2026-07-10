@@ -458,11 +458,7 @@ a {
         z-index: auto;
     }
 
-    header[role="navigation"] .primary-navigation__language,
-    header[role="navigation"]
-        > div:first-child
-        > nav
-        > div.hidden.lg\:flex.items-center.relative.shrink-0:not(.primary-navigation__desktop-menu) {
+    header[role="navigation"] .primary-navigation__language {
         z-index: 70;
     }
 }
