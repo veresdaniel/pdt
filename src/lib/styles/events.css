@@ -228,3 +228,72 @@
     font-size: 15px;
     line-height: 20px;
 }
+
+.join {
+    flex-direction: column;
+}
+
+.join .texts {
+    width: 537px;
+}
+
+.join .texts h2 {
+    width: 90%;
+}
+
+.join .texts p {
+    margin-top: 40px;
+    color: var(--color-neutral-dark);
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+}
+
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    width: 100%;
+    justify-content: end;
+}
+
+.skills .card {
+    max-width: 422px;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid var(--color-neutral-light);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.skills .card:first-of-type {
+    margin-top: 120px;
+}
+
+.skills .card .emoji {
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    padding: 16px;
+    background-color: var(--color-neutral-ultradark);
+    font-size: 32px;
+    line-height: 40px;
+    text-align: center;
+}
+
+.skills .card h4.title {
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 32px;
+    line-height: 36px;
+    color: var(--color-neutral-ultradark);
+}
+
+.skills .card .desc {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: var(--color-neutral-mid);
+}

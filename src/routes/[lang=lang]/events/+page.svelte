@@ -8,9 +8,21 @@
     import { eventsMenu } from "$lib/mockData/events-menu.mock.js";
 
     let { data } = $props();
-    let isPDT = $state(true);
-
-    console.log(data);
+    let eventType = $state(0);
+    let futureEvents = $derived(
+        data.futureEvents
+            .filter((event) => {
+                return event.type === eventType;
+            })
+            .slice(0, 2),
+    );
+    let pastEvents = $derived(
+        data.pastEvents
+            .filter((event) => {
+                return event.type === eventType;
+            })
+            .slice(0, 3),
+    );
 
     function formatDate(date) {
         if (!date) return "";
@@ -58,7 +70,7 @@
         </p>
 
         <Switch
-            isPDT
+            bind:eventType
             options={["Product Design Talks", "Business Breakfasts"]}
         />
     </div>
@@ -97,7 +109,7 @@
     <section class="container future-events">
         <h2>Upcoming events</h2>
         <div class="events">
-            {#each data.futureEvents.slice(0, 2) as event}
+            {#each futureEvents as event}
                 <a href={`events/${event.slug}/`}>
                     <div class="event">
                         <div style="min-height: 302px;">
@@ -122,7 +134,7 @@
     <section class="container past-events">
         <h2>Past events</h2>
         <div class="events">
-            {#each data.pastEvents.slice(0, 3) as event}
+            {#each pastEvents as event}
                 <a href={`events/${event.slug}/`}>
                     <div class="event">
                         <div style="min-height: 302px;">
@@ -148,8 +160,26 @@
         <h2>Past presenters</h2>
     </section>
 
-    <section class="container">
-        <h2>Why you should join our events?</h2>
+    <section class="container join">
+        <div class="texts">
+            <h2>Why you should join our events?</h2>
+            <p>
+                Join Product Design Talks to network with professionals, learn
+                new skills, stay up-to-date with industry trends, gain
+                inspiration, receive feedback on your work, build your
+                portfolio, and have fun!
+            </p>
+        </div>
+
+        <div class="skills">
+            {#each Array(5) as _, i}
+                <div class="card">
+                    <p class="emoji">😉</p>
+                    <h4 class="title">Knowledge sharing</h4>
+                    <p class="desc">The startup scene in Europe offers numerous workshops and events for beginners and experts in product design. Yet rarely do we hear about how they actually work and which methodologies they use to create long-lasting work. Ergománia wants to change this by sharing its knowledge and methodologies with a wider audience through a series of Product Design Talks.</p>
+                </div>
+            {/each}
+        </div>
     </section>
 
     <section class="subscirbe">
