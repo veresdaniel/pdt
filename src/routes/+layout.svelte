@@ -77,14 +77,7 @@
 		if (!isValidLocale(code)) return;
 		localeStore.set(code);
 
-		const segments = page.url.pathname.split('/').filter(Boolean);
-		if (segments.length > 0 && isValidLocale(segments[0])) {
-			segments[0] = code;
-			location.href = `/${segments.join('/')}/`;
-			return;
-		}
-
-		location.href = `/${code}/`;
+		location.href = page.url.origin;
 	}
 
 	$effect(() => {
