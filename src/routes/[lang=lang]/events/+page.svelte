@@ -3,9 +3,8 @@
     import Switch from "$lib/components/Switch.svelte";
     import Button from "$lib/components/Button.svelte";
     import { page } from "$app/state";
-    import { locale, t } from "$lib/i18n/i18n";
+    import { t } from "$lib/i18n/i18n";
     import { goto } from "$app/navigation";
-    import { eventsMenu } from "$lib/mockData/events-menu.mock.js";
 
     let { data } = $props();
     let eventType = $state(0);
