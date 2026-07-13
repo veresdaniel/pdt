@@ -1,4 +1,5 @@
 allowBuilds:
+  '@parcel/watcher': false
   '@veresdaniel/ui-kit': true
   esbuild: true
 minimumReleaseAgeExclude:
@@ -6,3 +7,4 @@ minimumReleaseAgeExclude:
   - vite@8.0.16
   - electron-to-chromium@1.5.387
   - '@veresdaniel/ui-kit'
+  - postcss@8.5.19
