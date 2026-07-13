@@ -4,9 +4,25 @@
     import Button from "$lib/components/Button.svelte";
     import { page } from "$app/state";
     import { locale, t } from "$lib/i18n/i18n";
+    import { goto } from "$app/navigation";
+    import { eventsMenu } from "$lib/mockData/events-menu.mock.js";
 
     let { data } = $props();
-    let isPDT = $state(true);
+    let eventType = $state(0);
+    let futureEvents = $derived(
+        data.futureEvents
+            .filter((event) => {
+                return event.type === eventType;
+            })
+            .slice(0, 2),
+    );
+    let pastEvents = $derived(
+        data.pastEvents
+            .filter((event) => {
+                return event.type === eventType;
+            })
+            .slice(0, 3),
+    );
 
     function formatDate(date) {
         if (!date) return "";
@@ -45,7 +61,6 @@
     padding="none"
     class="app-content-wrapper w-full"
 >
-
     <div class="greating">
         <h2>Events where you can meet us</h2>
         <p>
@@ -55,7 +70,7 @@
         </p>
 
         <Switch
-            isPDT
+            bind:eventType
             options={["Product Design Talks", "Business Breakfasts"]}
         />
     </div>
@@ -66,30 +81,27 @@
     <section class="hero next-event">
         <div class="hero-content">
             <div class="hero-meta">
-                <p>2026 február 25., Csütörtök, 9:00</p>
-                <p>Ergománia Iroda, 1114 Budapest, Bartók Béla út 39.</p>
+                <p>{formatDateTime(data.upcomingEvent.dateTime)}</p>
+                <p>{data.upcomingEvent.location}</p>
             </div>
-            <h1>Nem az AI képességein múlik a siker, hanem a döntéseken</h1>
+            <h1>{data.upcomingEvent.title}</h1>
             <p class="hero-short">
-                Üzleti reggelink célja, hogy a magyar kereskedelmi, banki és
-                e-commerce szektor szakértőit és döntéshozóit egy asztalhoz
-                ültessük,
+                {data.upcomingEvent.subtitle}
             </p>
             <div>
                 <Button label="Regisztálok" variant="highlighted" />
-                <Button label="Részletek" variant="secondary" />
+                <Button
+                    label="Részletek"
+                    variant="secondary"
+                    onclick={() => goto(data.upcomingEvent.slug)}
+                />
             </div>
         </div>
         <div class="hero-image">
             <img
-                src="//eregocdn-b22b.kxcdn.com/ergomania-talks/desktop/bg@3x.png"
+                src={data.upcomingEvent.featuredImageUrl}
                 alt="Talks"
                 class="desktop-image"
-            />
-            <img
-                src="//eregocdn-b22b.kxcdn.com/ergomania-talks/mobile/bg@3x-mobile.png"
-                alt="Talks"
-                class="mobile-image"
             />
         </div>
     </section>
@@ -97,7 +109,7 @@
     <section class="container future-events">
         <h2>Upcoming events</h2>
         <div class="events">
-            {#each data.futureEvents.slice(0, 2) as event}
+            {#each futureEvents as event}
                 <a href={`events/${event.slug}/`}>
                     <div class="event">
                         <div style="min-height: 302px;">
@@ -109,18 +121,20 @@
                         <div class="event-info">
                             <p class="date">{formatDate(event.dateTime)}</p>
                             <p class="title">{event.title}</p>
-                            <p class="desc">{event.description}</p>
+                            <p class="desc">{@html event.description}</p>
                         </div>
                     </div>
                 </a>
-            {:else}{/each}
+            {:else}
+                <h3>{$t("events.noEvents")}</h3>
+            {/each}
         </div>
     </section>
 
     <section class="container past-events">
         <h2>Past events</h2>
         <div class="events">
-            {#each data.pastEvents.slice(0, 3) as event}
+            {#each pastEvents as event}
                 <a href={`events/${event.slug}/`}>
                     <div class="event">
                         <div style="min-height: 302px;">
@@ -136,7 +150,9 @@
                         </div>
                     </div>
                 </a>
-            {:else}{/each}
+            {:else}
+                <h3>{$t("events.noEvents")}</h3>
+            {/each}
         </div>
     </section>
 
@@ -144,8 +160,26 @@
         <h2>Past presenters</h2>
     </section>
 
-    <section class="container">
-        <h2>Why you should join our events?</h2>
+    <section class="container join">
+        <div class="texts">
+            <h2>Why you should join our events?</h2>
+            <p>
+                Join Product Design Talks to network with professionals, learn
+                new skills, stay up-to-date with industry trends, gain
+                inspiration, receive feedback on your work, build your
+                portfolio, and have fun!
+            </p>
+        </div>
+
+        <div class="skills">
+            {#each Array(5) as _, i}
+                <div class="card">
+                    <p class="emoji">😉</p>
+                    <h4 class="title">Knowledge sharing</h4>
+                    <p class="desc">The startup scene in Europe offers numerous workshops and events for beginners and experts in product design. Yet rarely do we hear about how they actually work and which methodologies they use to create long-lasting work. Ergománia wants to change this by sharing its knowledge and methodologies with a wider audience through a series of Product Design Talks.</p>
+                </div>
+            {/each}
+        </div>
     </section>
 
     <section class="subscirbe">

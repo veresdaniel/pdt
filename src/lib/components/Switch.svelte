@@ -1,28 +1,28 @@
 <script>
-    let {options, isPDT = $bindable(false)} =$props();
-    let selected = $state("left");
+    let {options, eventType = $bindable(0)} =$props();
 
     function handleClick(side) {
-        selected = side;
-        isPDT = (selected === "left");
+        eventType = side;
+        console.log('swit', eventType);
     }
+    console.log('swit', eventType);
 </script>
 
 <div class="toggle-container">
-    <div class="slider" class:right={selected === "right"}></div>
+    <div class="slider" class:right={eventType === 1}></div>
 
     <button
         class="toggle-btn"
-        class:active={selected === "left"}
-        on:click={() => (handleClick("left"))}
+        class:active={eventType === 0}
+        on:click={() => (handleClick(0))}
     >
         {options[0]}
     </button>
 
     <button
         class="toggle-btn"
-        class:active={selected === "right"}
-        on:click={() => (handleClick("right"))}
+        class:active={eventType === 1}
+        on:click={() => (handleClick(1))}
     >
         {options[1]}
     </button>

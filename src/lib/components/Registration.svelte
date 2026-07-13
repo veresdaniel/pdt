@@ -108,6 +108,7 @@
                 email: "",
                 phone: "",
                 city: null,
+                position: "",
             };
         } catch (err) {
             console.error("Registration error:", err);
@@ -231,16 +232,16 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="email">
+                            <label for="position">
                                 {$t("registration.fields.position")}<span
                                     class="optional"
                                     >{$t("registration.optional")}</span
                                 >
                             </label>
                             <input
-                                type="email"
-                                id="email"
-                                name="email"
+                                type="position"
+                                id="position"
+                                name="position"
                                 bind:value={formData.position}
                                 oninput={() => clearError("position")}
                                 class:error={errors.position}
@@ -253,6 +254,12 @@
                                 >
                             {/if}
                         </div>
+
+                        <CityAutocomplete
+                            bind:value={formData.city}
+                            error={errors.city || ""}
+                            onSelect={handleCitySelect}
+                        />
 
                         <div class="form-group">
                             <label for="email">

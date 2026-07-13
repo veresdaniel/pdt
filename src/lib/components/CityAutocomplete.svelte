@@ -99,7 +99,7 @@
         {$t('registration.fields.city')}<span class="required">{$t('registration.required')}</span>
     </label>
     
-    <div class="input-wrapper">
+    <div class="input-wrapper form-group">
         <input
             type="text"
             id="city"
@@ -160,22 +160,8 @@
         position: relative;
     }
     
-    input {
-        width: 100%;
-        padding: 14px 16px;
-        border: 2px solid #e0e0e0;
-        border-radius: 6px;
-        font-size: 15px;
-        background: #fafafa;
-        transition: all 0.3s ease;
-        font-family: inherit;
-    }
-    
-    input:focus {
-        outline: none;
-        border-color: #FF7A59;
-        background: #fff;
-        box-shadow: 0 0 0 3px rgba(255, 122, 89, 0.1);
+    input:focus-visible {
+        outline: unset;
     }
     
     input.error {
