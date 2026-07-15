@@ -51,7 +51,7 @@ export class PublicContentService {
 	): Promise<{ index: number; content: Record<string, string> | null }[]> {
 		const items: { index: number; content: Record<string, string> | null }[] = [];
 
-		for (let index = 1; index <= maxItems; index += 1) {
+		for (let index = 0; index <= maxItems; index += 1) {
 			const content = await this.getByPageAndComponent(page, component, languageCode, index);
 			if (!this.hasMeaningfulContent(content)) {
 				break;

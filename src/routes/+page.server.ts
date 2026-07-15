@@ -16,8 +16,5 @@ export const load: PageServerLoad = async ({ fetch, locals, request }) => {
     ? 'hu'
     : 'en';
 
-  const upcomingEvent = await eventService.getUpcomingEvent(fetch, lang);
-
-  locals.upcomingEvent = upcomingEvent;
-  throw redirect(302, `/${lang}/events/${upcomingEvent.slug}/`);
+  throw redirect(302, `/${lang}/events`);
 };

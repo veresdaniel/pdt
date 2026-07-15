@@ -143,6 +143,10 @@
     gap: 8px;
 }
 
+.btn-holder .btn {
+    width: 100% !important;
+}
+
 
 /* timeline */
 

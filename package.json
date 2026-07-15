@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@sveltejs/adapter-node": "5.5.7",
+    "siema": "^1.5.1",
     "tailwindcss": "4.3.0"
   },
   "packageManager": "pnpm@11.7.0"

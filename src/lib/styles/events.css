@@ -241,12 +241,70 @@
     width: 90%;
 }
 
-.join .texts p {
+.join .texts p,
+.team .texts p {
     margin-top: 40px;
     color: var(--color-neutral-dark);
     font-weight: 400;
     font-size: 18px;
     line-height: 28px;
+}
+
+.team {
+    flex-direction: column;
+}
+
+.team .texts {
+    max-width: 603px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.carousel .member {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    height: 100%;
+}
+
+.carousel .member .memberImg {
+    width: 120px;
+    height: auto;
+    border-radius: 12px;
+    margin-bottom: 20px
+}
+
+.carousel .member .memberName {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 30px;
+    letter-spacing: 0%;
+    color: var(--color-neutral-ultradark)
+}
+
+.carousel .member .memberPosition {
+    font-weight: 500;
+    font-style: Italic;
+    font-size: 18px;
+    line-height: 20px;
+    color: var(--color-neutral-mid);
+
+}
+
+.slides div {
+    height: 100%;
+}
+
+.arrowIcon.right span:after {
+    content: url(../assets/arrowRight.svg);
+}
+
+.arrowIcon.left span:after {
+    content: url(../assets/arrowLeft.svg);
 }
 
 .skills {

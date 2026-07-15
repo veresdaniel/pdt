@@ -5,5 +5,6 @@ export enum PageEnum {
 	Blog = 3,
 	Team = 4,
 	WhitePaper = 5,
-	Common = 6
+	Common = 6,
+	Event = 7
 }
