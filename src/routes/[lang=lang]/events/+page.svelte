@@ -160,6 +160,7 @@
             <p>{data.pageContent[0].content.teamDesc}</p>
         </div>
         <div>
+        {#if data.teamMembers.length > 0}
             <Carousel dots={false} perPage={1} loop={false}>
                 {#each data.teamMembers as member}
                     <div class="member">
@@ -171,6 +172,7 @@
                 <span slot="left-control"></span>
                 <span slot="right-control"></span>
             </Carousel>
+            {/if}
         </div>
     </section>
 
