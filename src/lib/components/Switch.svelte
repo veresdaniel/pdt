@@ -34,7 +34,7 @@
         isolation: isolate;
         display: flex;
         flex-direction: row;
-        height: 44px;
+        height: max-content;
         color: var(--color-neutral-dark);
         background-color: var(--color-neutral-ultralight);
         font-family: Poppins;
@@ -43,7 +43,9 @@
         line-height: 20px;
         border-radius: 40px;
         padding: 4px;
-        min-width: 452px;
+        max-width: 452px;
+        width: 100%;
+
     }
 
     .slider {

@@ -57,13 +57,8 @@
     }
 </script>
 
-<Section
-    marginTop={false}
-    marginBottom={false}
-    padding="none"
-    class="app-content-wrapper w-full"
->
-    <div class="greating">
+<div class="event-wrapper">
+    <div class="container greeting">
         <h2>{@html data.pageContent[0].content.Heading}</h2>
         <p>{@html data.pageContent[0].content.Lead}</p>
 
@@ -72,9 +67,8 @@
             options={["Product Design Talks", "Business Breakfasts"]}
         />
     </div>
-</Section>
 
-<div class="event-wrapper">
+
     <!-- Hero Section -->
     <section class="hero next-event">
         <div class="hero-content">
