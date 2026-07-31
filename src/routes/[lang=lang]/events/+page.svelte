@@ -5,6 +5,7 @@
     import { page } from "$app/state";
     import { t } from "$lib/i18n/i18n";
     import { goto } from "$app/navigation";
+    import Carousel from "$lib/components/Carousel.svelte";
 
     let { data } = $props();
     let eventType = $state(0);
@@ -22,6 +23,8 @@
             })
             .slice(0, 3),
     );
+
+    console.log(data);
 
     function formatDate(date) {
         if (!date) return "";
@@ -54,28 +57,18 @@
     }
 </script>
 
-<Section
-    marginTop={false}
-    marginBottom={false}
-    padding="none"
-    class="app-content-wrapper w-full"
->
-    <div class="greating">
-        <h2>Events where you can meet us</h2>
-        <p>
-            We regularly participate in industry events, conferences, and
-            meetups where we exchange ideas, present our work, and connect with
-            designers, product teams, and business leaders.
-        </p>
+<div class="event-wrapper">
+    <div class="container greeting">
+        <h2>{@html data.pageContent[0].content.Heading}</h2>
+        <p>{@html data.pageContent[0].content.Lead}</p>
 
         <Switch
             bind:eventType
             options={["Product Design Talks", "Business Breakfasts"]}
         />
     </div>
-</Section>
 
-<div class="event-wrapper">
+
     <!-- Hero Section -->
     <section class="hero next-event">
         <div class="hero-content">
@@ -155,27 +148,42 @@
         </div>
     </section>
 
-    <section class="container past-presenters">
-        <h2>Past presenters</h2>
+    <section class="container team">
+        <div class="texts">
+            <h2>{data.pageContent[0].content.teamTitle}</h2>
+            <p>{data.pageContent[0].content.teamDesc}</p>
+        </div>
+        <div>
+        {#if data.teamMembers.length > 0}
+            <Carousel dots={false} perPage={1} loop={false}>
+                {#each data.teamMembers as member}
+                    <div class="member">
+                        <img class="memberImg" src="{member.profileImageUrl}" alt={member.displayName}>
+                        <a href="{member.linkedInUrl}" target="_blank"><p class="memberName">{member.displayName}</p></a>
+                        <p class="memberPosition">{member.position}</p>
+                    </div>
+                {/each}
+                <span slot="left-control"></span>
+                <span slot="right-control"></span>
+            </Carousel>
+            {/if}
+        </div>
     </section>
 
     <section class="container join">
         <div class="texts">
-            <h2>Why you should join our events?</h2>
+            <h2>{data.pageContent[0].content.skillsTitle}</h2>
             <p>
-                Join Product Design Talks to network with professionals, learn
-                new skills, stay up-to-date with industry trends, gain
-                inspiration, receive feedback on your work, build your
-                portfolio, and have fun!
+                {data.pageContent[0].content.skillsDesc}
             </p>
         </div>
 
         <div class="skills">
-            {#each Array(5) as _, i}
+            {#each data.pageContent as skill}
                 <div class="card">
-                    <p class="emoji">😉</p>
-                    <h4 class="title">Knowledge sharing</h4>
-                    <p class="desc">The startup scene in Europe offers numerous workshops and events for beginners and experts in product design. Yet rarely do we hear about how they actually work and which methodologies they use to create long-lasting work. Ergománia wants to change this by sharing its knowledge and methodologies with a wider audience through a series of Product Design Talks.</p>
+                    <p class="emoji">{skill.content.skillsCardIcon}</p>
+                    <h4 class="title">{skill.content.skillsCardTitle}</h4>
+                    <p class="desc">{skill.content.skillsCardDesc}</p>
                 </div>
             {/each}
         </div>

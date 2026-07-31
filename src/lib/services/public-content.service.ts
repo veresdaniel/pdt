@@ -46,20 +46,41 @@ export class PublicContentService {
 	async fetchIndexedContents(
 		page: PageEnum,
 		component: ComponentEnum,
-		languageCode?: LocaleCode,
-		maxItems = 24
+		languageCode?: LocaleCode
 	): Promise<{ index: number; content: Record<string, string> | null }[]> {
 		const items: { index: number; content: Record<string, string> | null }[] = [];
 
-		for (let index = 1; index <= maxItems; index += 1) {
-			const content = await this.getByPageAndComponent(page, component, languageCode, index);
-			if (!this.hasMeaningfulContent(content)) {
-				break;
-			}
+		const url = `${this.apiBaseUrl}/content/public/${page}/${component}`;
 
-			items.push({ index, content });
+		const response = await this.fetch(url, {
+			headers: createHeadersWithAuthorization(undefined, languageCode)
+		}).catch(() => null);
+
+		if (!response?.ok) {
+			return items;
 		}
 
-		return items;
+		const result = await response.json();
+
+		if (!Array.isArray(result)) {
+			return items;
+		}
+
+		const mappedResult: { index: number; content: Record<string, string> | null }[] = Object.values(
+			result.reduce((acc, { index, key, value }) => {
+				if (!acc[index]) {
+					acc[index] = {
+						index,
+						content: {}
+					};
+				}
+
+				acc[index].content[key] = value;
+
+				return acc;
+			}, {})
+		);
+
+		return mappedResult;
 	}
 }
