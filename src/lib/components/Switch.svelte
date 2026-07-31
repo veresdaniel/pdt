@@ -3,9 +3,7 @@
 
     function handleClick(side) {
         eventType = side;
-        console.log('swit', eventType);
     }
-    console.log('swit', eventType);
 </script>
 
 <div class="toggle-container">

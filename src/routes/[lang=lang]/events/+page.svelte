@@ -24,8 +24,6 @@
             .slice(0, 3),
     );
 
-    console.log(data);
-
     function formatDate(date) {
         if (!date) return "";
         const d = new Date(date);
