@@ -3,6 +3,9 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<!-- Fix the cascade layer order before any stylesheet loads: the ui-kit CSS (loaded first) declares
+		     theme + utilities, which would otherwise push our base (preflight) layer after utilities. -->
+		<style>@layer properties, theme, base, components, utilities;</style>
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

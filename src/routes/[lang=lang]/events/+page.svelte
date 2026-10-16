@@ -12,14 +12,14 @@
     let futureEvents = $derived(
         data.futureEvents
             .filter((event) => {
-                return event.type === eventType;
+                return Number(event.type) === eventType; // the API sends the type as a string ("0" / "1")
             })
             .slice(0, 2),
     );
     let pastEvents = $derived(
         data.pastEvents
             .filter((event) => {
-                return event.type === eventType;
+                return Number(event.type) === eventType; // the API sends the type as a string ("0" / "1")
             })
             .slice(0, 3),
     );
@@ -67,6 +67,7 @@
     </div>
 
 
+    {#if data.upcomingEvent}
     <!-- Hero Section -->
     <section class="hero next-event">
         <div class="hero-content">
@@ -95,6 +96,7 @@
             />
         </div>
     </section>
+    {/if}
 
     <section class="container future-events">
         <h2>Upcoming events</h2>

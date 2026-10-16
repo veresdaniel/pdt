@@ -53,7 +53,7 @@ export class PublicContentService {
 		const url = `${this.apiBaseUrl}/content/public/${page}/${component}`;
 
 		const response = await this.fetch(url, {
-			headers: createHeadersWithAuthorization(undefined, languageCode)
+			headers: createHeadersWithAuthorization(languageCode)
 		}).catch(() => null);
 
 		if (!response?.ok) {

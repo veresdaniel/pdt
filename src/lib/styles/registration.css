@@ -1,125 +1,169 @@
-/* Event Registration */
+/* Event registration (Figma "Event page • Desktop", 1440px): pink card 163-1276px (1114 wide), on the main site's
+   wide rail, 8px inside the shared text inset; 20px radius, 64px padding; form column 227-700px
+   (473), illustration centred in the right half. Title 52/56 orange, subtitle 15/20 #404569, fields 80px apart
+   (label 12/16 SemiBold, value 16/24, 1px #1C2036 underline), button 48px 15px, terms 18/28, notes 14/18. */
 .event-registration {
-    padding: 0;
-    padding-bottom: 80px;
-    background: #fff;
+    margin-bottom: 122px; /* Figma: card bottom → "Past events" */
+}
+
+/* The card sits 8px / 6px inside the text inset (Figma: 163-1276px on 1440, the text column starts at 155px) */
+.event-registration-inset {
+    padding-inline: calc(var(--event-inset-start) + 8px) calc(var(--event-inset-end) + 6px);
 }
 
 .registration-wrapper {
-    padding: 64px;
-    max-width: none;
-    margin: 0;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    background: url("../assets/registration-bg.svg") var(--color-orange-pastel);
+    grid-template-columns: minmax(0, 493fr) minmax(0, 557fr);
+    padding: 65px 0 63px 64px;
+    background: url("../assets/registration-bg.svg") var(--color-orange-pastel, #ffeeeb);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
     border-radius: 20px;
 }
 
-.registration-form-container {}
+.registration-form-container {
+    min-width: 0;
+    width: 95.9%; /* 473 / 493: the form column scales with the card (2560px) */
+}
 
 .registration-form-container h2 {
-    font-weight: 500;
+    margin: 0;
     font-size: 52px;
     line-height: 56px;
+    font-weight: 500;
+    letter-spacing: -0.03em;
     color: var(--color-orange);
-    margin-bottom: 16px;
 }
 
 .form-subtitle {
-    font-weight: 400;
+    margin: 15px 0 0;
     font-size: 15px;
     line-height: 20px;
+    font-weight: 400;
     color: var(--color-neutral-dark);
-    margin-bottom: 24px;
-
 }
 
 .registration-form {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 26px;
+    margin-top: 26px;
 }
 
-.form-group {
+.registration-form .form-group,
+.registration-form .city-autocomplete {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 5px;
 }
 
-.form-group label {
-    font-weight: 600;
+.registration-form label {
     font-size: 12px;
+    line-height: 16px;
+    font-weight: 600;
+    color: var(--color-neutral-ultradark);
+}
+
+.registration-form input[type="text"],
+.registration-form input[type="email"],
+.registration-form input[type="tel"] {
+    width: 100%;
+    padding: 0 0 8px;
+    font-size: 16px;
+    line-height: 24px;
+    color: var(--color-neutral-ultradark);
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid var(--color-neutral-ultradark);
+    border-radius: 0;
+}
+
+.registration-form input::placeholder {
+    color: #b7acb1;
+    opacity: 1;
+}
+
+.registration-form .btn.highlighted {
+    margin-top: -1px;
+    min-width: 0;
+    font-size: 15px;
     line-height: 20px;
-    color: var(--color-neutral-ultradark)
-}
-
-.form-group input[type="text"],
-.form-group input[type="email"],
-.form-group input[type="tel"] {
-    color: var(--color-neutral-ultradark);
-    font-size: 1rem;
-    padding-bottom: 12px;
-    border-bottom-width: 1px;
-}
-
-.form-important {
-    font-weight: 700;
-    font-style: Bold;
-    font-size: 14px;
-    line-height: 18px;
-    color: var(--color-neutral-ultradark);
-
-}
-
-.form-disclaimer {
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 18px;
-    vertical-align: middle;
-    color: var(--color-neutral-gray)
+    letter-spacing: -0.02em;
+    padding-block: 14px;
+    max-height: none;
 }
 
 .form-terms-of-use {
-    font-weight: 400;
+    margin: -3px 0 0;
     font-size: 18px;
     line-height: 28px;
-    color: var(--color-neutral-gray)
+    font-weight: 400;
+    color: var(--color-neutral-mid);
+}
+
+.form-terms-of-use a {
+    color: var(--color-neutral-ultradark);
+    text-decoration: underline;
+}
+
+.form-notes {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: -2px;
+}
+
+.form-important {
+    margin: 0;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 700;
+    color: var(--color-neutral-dark);
+}
+
+.form-disclaimer {
+    margin: 0;
+    font-size: 14px;
+    line-height: 18px;
+    font-weight: 400;
+    color: var(--color-neutral-mid);
 }
 
 .registration-image {
     display: flex;
-    align-content: center;
     align-items: center;
-    justify-items: center;
     justify-content: center;
 }
 
 .registration-image img {
-    width: 150px;
-    height: 150px;
+    width: 152px;
+    height: auto;
 }
 
-@media (max-width: 768px) {
-    #eventRegistration .container {
-        margin: 0;
+/* Mobile / tablet: one column, no illustration, the main site's mobile edges */
+@media (max-width: 63.99rem) {
+    .event-registration {
+        margin-bottom: 64px;
+    }
+
+    .event-registration-inset {
+        padding-inline: 0;
+    }
+
+    .registration-wrapper {
+        grid-template-columns: minmax(0, 1fr);
+        padding: 40px 24px;
+        border-radius: 24px;
     }
 
     .registration-form-container {
-        padding: 40px 30px;
+        width: 100%;
     }
 
     .registration-form-container h2 {
         font-size: 32px;
-    }
-
-
-    .registration-wrapper {
-        padding: 0;
-        grid-template-columns: 1fr;
+        line-height: 36px;
     }
 
     .registration-image {
