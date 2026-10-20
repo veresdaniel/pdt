@@ -16,7 +16,7 @@
     "update:ui-kit": "pnpm update @ergodot/ui-kit"
   },
   "devDependencies": {
-    "@ergodot/ui-kit": "npm:@veresdaniel/ui-kit@^1.15.0",
+    "@ergodot/ui-kit": "npm:@veresdaniel/ui-kit@^1.15.1",
     "@sveltejs/adapter-auto": "7.0.1",
     "@sveltejs/kit": "2.69.2",
     "@sveltejs/vite-plugin-svelte": "7.2.0",
