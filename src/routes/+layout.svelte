@@ -12,7 +12,7 @@
 	import '../lib/styles/registration.css';
 	import { PrimaryNavigation, Section } from '@ergodot/ui-kit';
 	import { PUBLIC_ERGOMANIA_SITE_URL } from '$env/static/public';
-	import ErgomaniaLogo from '$lib/assets/ergomania-bk.svg';
+	import ErgomaniaLogo from '$lib/assets/ergomania-logo-nav.svg'; // same nav logo as the main site
 	import { translations, type Locale } from '$lib/i18n/i18n.js';
 	import { createFormatMissing } from '$lib/functions/formatMissingTranslation';
 	import { buildFooterData, buildFooterContactPersons } from '$lib/functions/common-content.mappers';
@@ -89,8 +89,9 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-<Section marginTop={false} marginBottom={false} padding="none" class="app-content-wrapper full-width max-lg:px-0! px-10!">
-	<div class="section">
+<!-- Same nav geometry as the main site (frontend/src/routes/(app)/+layout.svelte, --nav-* in app.css) -->
+<Section marginTop={false} marginBottom={false} padding="none" class="app-content-wrapper full-width max-lg:px-0!">
+	<div class="site-nav-boundary">
 		<PrimaryNavigation
 			menuItems={data.menuItems}
 			{logo}
@@ -99,7 +100,7 @@
 			{eventMegaMenuLabels}
 			sticky={true}
 			fullWidthSticky={true}
-			layoutBoundary={{ maxWidth: '1770px', paddingInline: '2.5rem' }}
+			layoutBoundary={{ paddingInline: 'var(--nav-padding-inline)', inset: 'var(--nav-inset)' }}
 		/>
 	</div>
 </Section>

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { PUBLIC_API_BASE_URL } from "$env/static/public";
+    import { PUBLIC_API_BASE_URL, PUBLIC_ERGOMANIA_SITE_URL } from "$env/static/public";
     import { locale, t } from "$lib/i18n/i18n";
     import type { EventRegistration } from "$lib/models/event-registration.model";
     import { get } from "svelte/store";
@@ -9,6 +9,10 @@
     import Button from "./Button.svelte";
 
     export let eventId: number;
+
+    /** Privacy policy on the main site, in the page language (the terms text links to it) */
+    $: privacyUrl = `${PUBLIC_ERGOMANIA_SITE_URL.replace(/\/$/, "")}/${$locale}/privacy-policy/`;
+    $: termsHtml = $t("registration.terms").replaceAll("{privacyUrl}", privacyUrl);
 
     let errors: Record<string, string> = {};
 
@@ -134,8 +138,8 @@
     }
 </script>
 
-<section id="eventRegistration" class="event-registration">
-    <div class="container">
+<section id="eventRegistration" class="event-registration wide-content-rail">
+    <div class="event-inset event-registration-inset">
         <div class="registration-wrapper">
             <div class="registration-form-container">
                 <h2>{$t("registration.title")}</h2>
@@ -161,10 +165,7 @@
                     <form class="registration-form" onsubmit={handleSubmit}>
                         <div class="form-group">
                             <label for="lastName">
-                                {$t("registration.fields.lastName")}<span
-                                    class="required"
-                                    >{$t("registration.required")}</span
-                                >
+                                {$t("registration.fields.lastName")}
                             </label>
                             <input
                                 type="text"
@@ -185,10 +186,7 @@
 
                         <div class="form-group">
                             <label for="firstName">
-                                {$t("registration.fields.firstName")}<span
-                                    class="required"
-                                    >{$t("registration.required")}</span
-                                >
+                                {$t("registration.fields.firstName")}
                             </label>
                             <input
                                 type="text"
@@ -210,10 +208,7 @@
 
                         <div class="form-group">
                             <label for="company">
-                                {$t("registration.fields.company")}<span
-                                    class="required"
-                                    >{$t("registration.required")}</span
-                                >
+                                {$t("registration.fields.company")}
                             </label>
                             <input
                                 type="text"
@@ -239,7 +234,7 @@
                                 >
                             </label>
                             <input
-                                type="position"
+                                type="text"
                                 id="position"
                                 name="position"
                                 bind:value={formData.position}
@@ -263,10 +258,7 @@
 
                         <div class="form-group">
                             <label for="email">
-                                {$t("registration.fields.email")}<span
-                                    class="required"
-                                    >{$t("registration.required")}</span
-                                >
+                                {$t("registration.fields.email")}
                             </label>
                             <input
                                 type="email"
@@ -312,18 +304,14 @@
                                 : $t("registration.submit")}
                         />
 
-                        <p class="form-terms-of-use">
-                            {$t("registration.disclaimer")}
-                        </p>
+                        <!-- eslint-disable-next-line svelte/no-at-html-tags -- own translation string -->
+                        <p class="form-terms-of-use">{@html termsHtml}</p>
 
-                        <p class="form-important">{$t("registration.important")}</p>
-                        <p class="form-disclaimer">
-                            {$t("registration.disclaimer")}
-                        </p>
-                        <p class="form-disclaimer">
-                            {$t("registration.disclaimer")}
-                        </p>
-
+                        <div class="form-notes">
+                            <p class="form-important">{$t("registration.important")}</p>
+                            <p class="form-disclaimer">{$t("registration.note1")}</p>
+                            <p class="form-disclaimer">{$t("registration.note2")}</p>
+                        </div>
                     </form>
                 {/if}
             </div>
@@ -336,23 +324,12 @@
 </section>
 
 <style>
-    .required {
-        color: #ff7a59;
-        margin-left: 4px;
-    }
-
     .optional {
+        margin-left: 4px;
         font-weight: 400;
         font-size: 12px;
-        line-height: 20px;
-        color: var(--color-neutral-gray);
-    }
-
-    .form-group input {
-        color: var(--color-neutral-ultradark);
-        font-size: 1rem;
-        padding-bottom: 12px;
-        border-bottom-width: 1px;
+        line-height: 16px;
+        color: var(--color-neutral-gray, #9396ab);
     }
 
     .form-group input:focus {

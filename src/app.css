@@ -1,9 +1,13 @@
-@import "tailwindcss/preflight";
-@import "tailwindcss/theme";
-@import "tailwindcss/utilities";
+/* Explicit cascade layers: unlayered, the preflight reset (margin/padding 0, img height auto) beat the
+   utilities, so ui-kit classes like mr-6 / h-9 had no effect (nav items touching, logo 0px tall). */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme" layer(theme);
+@import "tailwindcss/preflight" layer(base);
+@import "tailwindcss/utilities" layer(utilities);
 
 @source "../src/**/*.{html,js,ts,svelte}";
 @source "../node_modules/@ergodot/ui-kit/**/*.{svelte,js,ts}";
+@source "../node_modules/@ergodot/ui-kit/dist"; /* point at dist explicitly: the repo .gitignore ignores dist/ (as in frontend/src/app.css) */
 
 /* Poppins @font-face – CDN woff2 (preloaded in app.html) */
 @font-face {
@@ -28,6 +32,16 @@
     font-weight: 600;
     font-display: swap;
     src: url('https://ergo-cdn2.azureedge.net/fonts/poppins/poppins-latin-600.woff2') format('woff2');
+}
+
+/* Real bold (700), as on the main site (frontend/src/assets/scss/_fonts.scss); without it bold text is synthesised
+   and comes out narrower (e.g. different line breaks in the shared footer) */
+@font-face {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url('https://ergo-cdn2.azureedge.net/fonts/poppins/poppins-latin-700.woff2') format('woff2');
 }
 
 
@@ -214,10 +228,77 @@ img {
     display: block;
 }
 
-a {
-    text-decoration: none;
-    color: inherit;
-    transition: color 0.3s ease;
+/* Reserve the scrollbar space, as on the main site, so the nav does not shift when switching between the two sites */
+html {
+	scrollbar-gutter: stable;
+}
+
+/* Nav card geometry, same as the main site (frontend/src/app.css): card 40px from the viewport edges,
+   24px inside on desktop; 8px / 16px on mobile */
+:root {
+	--nav-inset: 0px;
+	--nav-padding-inline: 16px;
+}
+
+.site-nav-boundary {
+	overflow: visible;
+}
+
+@media (max-width: 63.99rem) {
+	.site-nav-boundary {
+		padding-inline: 8px;
+	}
+
+	.primary-navigation--layout-boundary:not(.fixed) {
+		padding-top: 8px;
+		padding-bottom: 52px;
+	}
+}
+
+@media (min-width: 64rem) {
+	:root {
+		--nav-inset: 40px;
+		--nav-padding-inline: 24px;
+	}
+
+	.site-nav-boundary {
+		padding-inline: 0;
+	}
+}
+
+/* Content rails, same as the main site (frontend/src/app.css): the wide rail aligns with the nav card edges
+   (16px on mobile, 40px from 1024px) and is capped at 1760px, centred */
+:root {
+	--nav-card-edge: 16px;
+	--content-wide-max-width: 1760px;
+}
+
+@media (min-width: 64rem) {
+	:root {
+		--nav-card-edge: var(--nav-inset);
+	}
+}
+
+.wide-content-rail {
+	width: 100%;
+	padding-inline: max(var(--nav-card-edge), calc((100% - var(--content-wide-max-width)) / 2));
+	box-sizing: border-box;
+	min-width: 0;
+}
+
+/* Nav logo size, same as the main site (frontend/src/app.css): the ui-kit nav leaves it to the app */
+.primary-navigation img {
+	width: 192px;
+	height: auto;
+}
+
+/* In the base layer, so ui-kit utilities (e.g. the underlined links of the footer consent text) can override it */
+@layer base {
+    a {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.3s ease;
+    }
 }
 
 .main-content {

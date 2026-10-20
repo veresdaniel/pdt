@@ -23,7 +23,8 @@ const eventService = new EventService();
 export const load: PageServerLoad = async ({ params, fetch }) => {
   const publicContentService = new PublicContentService(fetch, API_BASE_URL);
   const lang = params.lang;
-  const upcomingEvent = await eventService.getUpcomingEvent(fetch, lang);
+  // No upcoming event (all events are in the past) is a normal state, not an error: the page then skips the next-event block
+  const upcomingEvent = await eventService.getUpcomingEvent(fetch, lang).catch(() => null);
 
   const alleventsResponse = await fetch(`${API_BASE_URL}/events`, {
     headers: {

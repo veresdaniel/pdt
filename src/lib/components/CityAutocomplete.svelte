@@ -96,7 +96,7 @@
 
 <div class="city-autocomplete">
     <label for="city">
-        {$t('registration.fields.city')}<span class="required">{$t('registration.required')}</span>
+        {$t('registration.fields.city')}
     </label>
     
     <div class="input-wrapper form-group">
@@ -146,9 +146,10 @@
     }
     
     label {
-        font-size: 14px;
+        font-size: 12px;
+        line-height: 16px;
         font-weight: 600;
-        color: #333;
+        color: var(--color-neutral-ultradark);
     }
     
     .required {

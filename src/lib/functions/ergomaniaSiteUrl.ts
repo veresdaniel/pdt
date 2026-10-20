@@ -5,10 +5,13 @@ export function isExternalLike(value: string): boolean {
 	return /^(?:[a-z][a-z0-9+.-]*:|\/\/|#|\?)/i.test(value);
 }
 
-/** Paths that belong to the PDT app (not ergomania.eu). */
+/**
+ * Paths that belong to the PDT app (not ergomania.eu): single event pages (/events/<slug>/).
+ * The events listing (/events/) is the main site's Events page, the same one its own menu links to.
+ */
 export function isPdtInternalPath(path: string): boolean {
 	const normalized = String(path ?? '').trim().toLowerCase();
-	return /(^|\/)events(\/|$|\?|#)/.test(normalized);
+	return /(^|\/)events\/[^/?#]+/.test(normalized);
 }
 
 export function toErgomaniaSiteUrl(

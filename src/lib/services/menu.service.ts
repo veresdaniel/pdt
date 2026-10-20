@@ -1,6 +1,7 @@
 import { resolveMenuUrl } from '$lib/functions/ergomaniaSiteUrl';
 import { createHeadersWithAuthorization } from '$lib/functions/httpHelper';
 import { localizePath } from '$lib/functions/localizePath';
+import { getEventsMenuLabel } from '$lib/functions/eventsMenuLabel';
 import { isEventsMenuItem, mapEventMenuCategories } from '$lib/services/eventMenu.mapper';
 import { getLocaleForApi, type LocaleCode } from '$lib/types/locale.type';
 import { PUBLIC_ERGOMANIA_SITE_URL } from '$env/static/public';
@@ -150,19 +151,22 @@ function parseMenuResponse(menuData: unknown, localeForApi: LocaleCode): MenuIte
 
 function mergeEventsMenuItem(
 	menuItems: MenuItemPayload[],
-	eventCategories: ReturnType<typeof mapEventMenuCategories>
+	eventCategories: ReturnType<typeof mapEventMenuCategories>,
+	locale: LocaleCode
 ): MenuItemPayload[] {
 	if (eventCategories.length === 0) return menuItems;
 
 	const eventsIndex = menuItems.findIndex((item) => isEventsMenuItem(item));
 	if (eventsIndex >= 0) {
 		return menuItems.map((item, index) =>
-			index === eventsIndex ? { ...item, eventChildren: eventCategories } : item
+			// Like the main site: the top-level Events item always goes to the main site's Events page (the admin path is
+			// ignored – in the CMS it still points to the old PDT site), single events stay on this app
+			index === eventsIndex ? { ...item, path: '/events/', eventChildren: eventCategories } : item
 		);
 	}
 
 	const fallbackItem: MenuItemPayload = {
-		text: 'Events',
+		text: getEventsMenuLabel(locale),
 		path: '/events/',
 		showInHeader: true,
 		headerIndex: menuItems.length > 0 ? menuItems[menuItems.length - 1].headerIndex : 0,
@@ -238,7 +242,7 @@ export async function loadMenuItems(
 		: [];
 
 	const withServices = mergeUxServicesMenuItem(menuItems, serviceCategories);
-	const merged = mergeEventsMenuItem(withServices, eventCategories);
+	const merged = mergeEventsMenuItem(withServices, eventCategories, currentLang);
 	const siteBase = PUBLIC_ERGOMANIA_SITE_URL.replace(/\/$/, '');
 	const localized = localizeMenuItems(merged, currentLang, siteBase);
 	normalizeMenuPaths(localized);
